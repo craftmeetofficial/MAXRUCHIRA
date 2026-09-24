@@ -47,12 +47,38 @@
   <style>
     body {
       background-color: #040108;
-      background-image: 
-        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(168, 85, 247, 0.25), transparent),
-        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(139, 92, 246, 0.15), transparent),
-        radial-gradient(ellipse 50% 30% at 20% 80%, rgba(236, 72, 153, 0.1), transparent);
       min-height: 100vh;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* BACKGROUND VIDEO STYLES */
+    .bg-video-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .bg-video-container video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* වඩිය පෙනෙන්නේ නැති වෙන්න සහ තීම් එකට සෙට් වෙන්න opacity සහ dark overlay එකක් */
+      opacity: 0.22; 
+      filter: contrast(120%) brightness(70%) saturate(120%);
+    }
+
+    /* Dark overlay to blend video seamlessly */
+    .bg-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(4, 1, 8, 0.65), rgba(4, 1, 8, 0.92));
+      z-index: 1;
     }
 
     /* INTRO ASSEMBLY ANIMATION STYLES */
@@ -88,7 +114,7 @@
     }
 
     .glass {
-      background: rgba(15, 10, 30, 0.55);
+      background: rgba(15, 10, 30, 0.65);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(168, 85, 247, 0.25);
@@ -105,7 +131,6 @@
       text-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
     }
     
-    /* Neon Purple Outline effect for Subtitle */
     .neon-outline-text {
       color: #ffffff;
       text-shadow: 
@@ -168,31 +193,36 @@
 </head>
 <body class="font-body text-gray-200 antialiased">
 
-  <!-- INTRO ASSEMBLY OVERLAY (කැලි කැලි එකතු වී හැදෙන animation එක) -->
+  <!-- BACKGROUND VIDEO BACKGROUND -->
+  <div class="bg-video-container">
+    <div class="bg-video-overlay"></div>
+    <!-- මෙහි src එකට ඔබ කැමති gaming හෝ neon loop වීඩියෝ ලින්ක් එකක් (mp4) දාන්න පුළුවන් -->
+    <video autoplay muted loop playsinline>
+      <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-code-31910-large.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- INTRO ASSEMBLY OVERLAY -->
   <div id="assembly-overlay">
     <div class="text-center px-4 max-w-xl">
-      <!-- Part 1: Badge -->
       <div class="assemble-part mb-6" style="transition-delay: 0.1s;">
         <span class="inline-block px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass shadow-neon">
           SYSTEM INITIALIZING...
         </span>
       </div>
 
-      <!-- Part 2: Title Logo -->
       <div class="assemble-part mb-4" style="transition-delay: 0.3s;">
         <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-7xl tracking-wider italic neon-text">
           MAXRUCHIRA
         </h1>
       </div>
 
-      <!-- Part 3: Subtitle -->
       <div class="assemble-part mb-8" style="transition-delay: 0.5s;">
         <p class="font-display font-bold text-xs sm:text-sm neon-outline-text whitespace-nowrap overflow-hidden text-ellipsis">
           SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
         </p>
       </div>
 
-      <!-- Part 4: Loading progress bar & assemble pieces effect -->
       <div class="assemble-part w-64 mx-auto" style="transition-delay: 0.7s;">
         <div class="h-1.5 w-full bg-purple-950 rounded-full overflow-hidden border border-purple-500/30">
           <div id="assembly-progress" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-0 transition-all duration-700"></div>
@@ -267,7 +297,6 @@
         MAXRUCHIRA
       </h1>
 
-      <!-- Subtitle with Neon Purple Outline -->
       <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 whitespace-nowrap overflow-hidden text-ellipsis px-2">
         SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
       </p>
@@ -310,7 +339,7 @@
   </section>
 
   <!-- LIVE STREAM EMBED SECTION -->
-  <section id="live" class="py-12 px-4 max-w-5xl mx-auto">
+  <section id="live" class="py-12 px-4 max-w-5xl mx-auto relative z-10">
     <div class="glass rounded-3xl p-6 border border-purple-500/40 shadow-neon">
       <div class="flex items-center justify-between mb-4">
         <div class="flex items-center gap-3">
@@ -335,7 +364,7 @@
   </section>
 
   <!-- SOCIAL -->
-  <section id="social" class="py-16 px-4">
+  <section id="social" class="py-16 px-4 relative z-10">
     <div class="max-w-5xl mx-auto">
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">Connect With Me</h2>
       <p class="text-center text-gray-400 mb-10">Join the community across platforms</p>
@@ -383,17 +412,15 @@
   </section>
 
   <!-- MY BUILD -->
-  <section id="build" class="py-16 px-4">
+  <section id="build" class="py-16 px-4 relative z-10">
     <div class="max-w-6xl mx-auto">
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">My Build</h2>
       <p class="text-center text-gray-400 mb-8">Streaming &amp; Gaming Setup Specs (Click any item for details)</p>
 
-      <!-- SETUP DYNAMIC PHOTO BANNER -->
       <div class="mb-10 glass rounded-3xl overflow-hidden border border-purple-500/40 p-2 shadow-neon">
         <img id="setup-banner-img" src="1.jpeg" alt="MAXRUCHIRA Gaming Setup" class="w-full h-auto max-h-[500px] object-cover rounded-2xl" onerror="this.src='https://via.placeholder.com/1200x600/100820/a855f7?text=MAXRUCHIRA+GAMING+SETUP';">
       </div>
 
-      <!-- FILTER TABS -->
       <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
         <button onclick="filterCategory('all', '1.jpeg', event)" class="tab-btn active px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">All Items</button>
         <button onclick="filterCategory('pc', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Components</button>
@@ -402,15 +429,13 @@
         <button onclick="filterCategory('pcspec', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Spec</button>
       </div>
 
-      <!-- SPEC CARDS GRID -->
       <div id="spec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-        <!-- Generated Dynamically via JS -->
       </div>
     </div>
   </section>
 
   <!-- SETUP GALLERY SECTION -->
-  <section id="gallery" class="py-16 px-4 bg-purple-950/10">
+  <section id="gallery" class="py-16 px-4 relative z-10 bg-purple-950/10">
     <div class="max-w-6xl mx-auto">
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">Setup Gallery</h2>
       <p class="text-center text-gray-400 mb-10">A closer look at the battlestation</p>
@@ -444,7 +469,7 @@
   </section>
 
   <!-- FEATURED VIDEOS -->
-  <section id="videos" class="py-16 px-4">
+  <section id="videos" class="py-16 px-4 relative z-10">
     <div class="max-w-6xl mx-auto">
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">Featured Videos</h2>
       <p class="text-center text-gray-400 mb-10">Latest gameplay &amp; series highlights</p>
@@ -480,7 +505,6 @@
       <h3 class="text-2xl font-display font-bold text-white mb-4 neon-text" id="modal-title">Component Name</h3>
       
       <div class="space-y-3 text-sm text-gray-300 border-t border-purple-500/20 pt-4" id="modal-details">
-        <!-- Details injected dynamically -->
       </div>
 
       <div class="mt-6 text-right">
@@ -492,7 +516,7 @@
   </div>
 
   <!-- FOOTER -->
-  <footer class="border-t border-purple-500/20 pt-12 pb-6 px-4 glass mt-12">
+  <footer class="border-t border-purple-500/20 pt-12 pb-6 px-4 glass mt-12 relative z-10">
     <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
       <div class="flex items-center gap-2 mb-4">
         <div class="w-8 h-8 rounded-full overflow-hidden border border-purple-500 flex items-center justify-center">
@@ -519,22 +543,18 @@
 
   <!-- JAVASCRIPT & INTRO ASSEMBLY CONTROLLER -->
   <script>
-    // Intro Assembly Animation Controller
     window.addEventListener('DOMContentLoaded', () => {
       const overlay = document.getElementById('assembly-overlay');
       const progressBar = document.getElementById('assembly-progress');
 
-      // Progress bar fill animation
       setTimeout(() => {
         progressBar.style.width = '100%';
       }, 100);
 
-      // Trigger assembling pieces
       setTimeout(() => {
         overlay.classList.add('assembled');
       }, 300);
 
-      // Fade out and remove intro overlay after assembly completes
       setTimeout(() => {
         overlay.classList.add('fade-out');
       }, 1500);
