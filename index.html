@@ -52,7 +52,7 @@
       position: relative;
     }
 
-    /* BACKGROUND IMAGE STYLES WITH BLUR */
+    /* BACKGROUND IMAGE STYLES WITH REDUCED BLUR */
     .bg-video-container {
       position: fixed;
       top: 0;
@@ -68,9 +68,9 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      /* මෙතැනින් ෆොටෝ එකට blur එකක් සහ brightness අඩු කර ඇත */
-      filter: blur(8px) contrast(120%) brightness(50%) saturate(120%);
-      transform: scale(1.1); /* blur එකේදී අයිතිවාසිකම් මගහැරීමට */
+      /* මෙතැනින් blur එක අඩු කර ඇත (3px පමණි) */
+      filter: blur(3px) contrast(120%) brightness(55%) saturate(120%);
+      transform: scale(1.05);
     }
 
     /* Dark overlay to blend image seamlessly */
@@ -193,7 +193,7 @@
 </head>
 <body class="font-body text-gray-200 antialiased">
 
-  <!-- BACKGROUND IMAGE CONTAINER (mr45.jpg with blur) -->
+  <!-- BACKGROUND IMAGE CONTAINER (mr45.jpg with reduced blur) -->
   <div class="bg-video-container">
     <div class="bg-video-overlay"></div>
     <img src="mr45.jpg" alt="Background" onerror="this.src='https://via.placeholder.com/1920x1080/040108/a855f7?text=Background';">
