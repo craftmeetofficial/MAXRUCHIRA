@@ -70,6 +70,21 @@
       background-clip: text;
       text-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
     }
+    
+    /* Neon Purple Outline effect for Subtitle */
+    .neon-outline-text {
+      color: #ffffff;
+      text-shadow: 
+        0 0 5px rgba(168, 85, 247, 0.8),
+        0 0 10px rgba(168, 85, 247, 0.6),
+        0 0 20px rgba(168, 85, 247, 0.4),
+        -1px -1px 0 #a855f7,  
+         1px -1px 0 #a855f7,
+        -1px  1px 0 #a855f7,
+         1px  1px 0 #a855f7;
+      letter-spacing: 0.15em;
+    }
+
     .neon-border {
       border: 1px solid rgba(168, 85, 247, 0.4);
       box-shadow: 0 0 12px rgba(168, 85, 247, 0.25), inset 0 0 12px rgba(168, 85, 247, 0.05);
@@ -184,7 +199,8 @@
         MAXRUCHIRA
       </h1>
 
-      <p class="text-lg sm:text-xl md:text-2xl text-gray-300 font-medium mb-10 max-w-2xl mx-auto">
+      <!-- Updated Subtitle: smaller, single line, with neon purple outline/glow effect -->
+      <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 whitespace-nowrap overflow-hidden text-ellipsis px-2">
         SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
       </p>
 
@@ -449,7 +465,7 @@
       { id: 11, category: 'peripherals', type: 'Webcam', name: 'Razer Kiyo Pro', desc: 'Full HD 1080p 60FPS webcam with adaptive light sensor for crystal clear facecam streaming.', isPcSpec: false },
       { id: 12, category: 'peripherals', type: 'Microphone', name: 'Razer Seiren V3 Mini', desc: 'Ultra-compact USB condenser microphone with studio-grade voice clarity and tap-to-mute sensor.', isPcSpec: false },
       { id: 13, category: 'peripherals', type: 'Mouse', name: 'Razer Viper Mini', desc: 'Ultra-lightweight 61g ambidextrous design, optical mouse switches, and 8500 DPI optical sensor.', isPcSpec: false },
-      { id: 14, category: 'peripherals', type: 'Mouse Pad', name: 'Razer Gigantus V2', desc: 'Soft gaming mouse mat with textured micro-weave cloth surface for fluid tracking.', isPcSpec: false },
+      { id: 14, category: 'peripherals', type: 'Mouse Pad', name: 'Razer Gigantus V2', desc: 'Smart gaming mouse mat with textured micro-weave cloth surface for fluid tracking.', isPcSpec: false },
       { id: 15, category: 'peripherals', type: 'Headset', name: 'Sony PlayStation Platinum Wireless', desc: 'Premium 7.1 Virtual Surround Sound, 50mm drivers, and noise-canceling dual microphones.', isPcSpec: false },
       { id: 16, category: 'peripherals', type: 'Capture Card', name: 'Elgato HD60X', desc: '4K60 HDR10 Passthrough & 1080p60 capture card for seamless console streaming.', isPcSpec: false },
       { id: 17, category: 'consoles', type: 'Steering Wheel', name: 'Logitech G923', desc: 'TRUEFORCE high-definition force feedback racing wheel with programmable dual-clutch launch control.', isPcSpec: false },
