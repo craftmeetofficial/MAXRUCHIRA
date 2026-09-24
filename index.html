@@ -326,7 +326,7 @@
     </div>
   </section>
 
-  <!-- LIVE STREAM EMBED SECTION -->
+  <!-- LIVE STREAM EMBED SECTION (FIXED) -->
   <section id="live" class="py-12 px-4 max-w-5xl mx-auto relative z-10">
     <div class="glass rounded-3xl p-6 border border-purple-500/40 shadow-neon">
       <div class="flex items-center justify-between mb-4">
@@ -340,7 +340,7 @@
         <iframe 
           id="live-iframe"
           class="w-full h-full"
-          src="https://www.youtube.com/embed/live_stream?channel=UCpRnLw-i6ep13w_vh9M9k-g" 
+          src="https://www.youtube.com/embed/PeN53hiPt7M" 
           title="MAXRUCHIRA Live Stream" 
           frameborder="0" 
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -374,7 +374,7 @@
             <svg class="w-7 h-7 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
           </div>
           <h3 class="font-semibold text-white mb-1">YouTube Vlogs</h3>
-          <p class="text-sm text-gray-300">@MAXRUCHIRA VLOGS</p>
+          <p class="text-sm text-gray-300">@MAXRUCHIRAVLOGS</p>
           <p class="text-xs text-purple-400 mt-2">40 Subs</p>
         </a>
 
@@ -519,6 +519,17 @@
         <a href="https://facebook.com/maxruchia/?modal=admin_todo_tour" target="_blank" class="hover:text-purple-400 transition">Facebook</a>
         <a href="https://discord.gg/8PMyfSGzEA" target="_blank" class="hover:text-purple-400 transition">Discord</a>
       </div>
+
+      <!-- Developed by Kavee Creations Neon Box -->
+      <div class="w-full max-w-md mx-auto mb-6 p-4 rounded-2xl glass border border-purple-500/50 shadow-neon hover:shadow-neon-lg transition-all duration-300 group">
+        <p class="text-xs sm:text-sm font-semibold tracking-wider text-purple-300 uppercase mb-1">
+          Developed by <span class="neon-text font-bold">Kavee Creations</span>
+        </p>
+        <a href="mailto:kaveeshasehara7@gmail.com" class="text-xs sm:text-sm text-gray-300 hover:text-cyan-300 transition break-all underline decoration-purple-500/50 hover:decoration-cyan-400">
+          kaveeshasehara7@gmail.com
+        </a>
+      </div>
+
       <p class="text-xs text-gray-400">© 2026 MAXRUCHIRA. All rights reserved.</p>
     </div>
   </footer>
@@ -536,7 +547,7 @@
 
       setTimeout(() => {
         overlay.classList.add('fade-out');
-      }, 1500);
+      }, 1200);
     });
 
     // MOBILE MENU TOGGLE
@@ -545,87 +556,19 @@
     const menuIcon = document.getElementById('menuIcon');
     const closeIcon = document.getElementById('closeIcon');
 
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      menuIcon.classList.toggle('hidden');
+      closeIcon.classList.toggle('hidden');
+    });
+
+    document.querySelectorAll('#mobileMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
       });
-    }
-
-    // SPEC ITEMS DATA & FILTERING LOGIC
-    const specsData = [
-      { id: 1, category: 'pc', title: 'Processor (CPU)', desc: 'High-performance gaming CPU', details: ['Model: Intel Core i7 / Ryzen 7', 'Cores/Threads: Optimized for Multitasking & Streaming', 'Cooling: Liquid Cooling AIO RGB'], image: '1.jpeg' },
-      { id: 2, category: 'pc', title: 'Graphics Card (GPU)', desc: 'NVIDIA GeForce RTX series', details: ['Ray Tracing & DLSS Enabled', 'High FPS 1080p/1440p Gaming', 'Custom RGB Shroud'], image: '1.jpeg' },
-      { id: 3, category: 'peripherals', title: 'Streaming Microphone', desc: 'Studio quality condenser mic', details: ['Crystal clear voice isolation', 'USB/XLR connectivity', 'Boom arm with shock mount'], image: '2.jpeg' },
-      { id: 4, category: 'consoles', title: 'PlayStation 5 Slim', desc: 'Console gaming & exclusives', details: ['Ultra-high speed SSD', 'DualSense wireless controller', '4K gaming output'], image: '2.jpeg' },
-      { id: 5, category: 'consoles', title: 'Sim Racing Rig', desc: 'Steering wheel & pedal set', details: ['Logitech G923 TrueForce', 'Leather wrapped steering wheel', 'Force feedback realism'], image: '3.jpeg' }
-    ];
-
-    function renderSpecs(filter = 'all') {
-      const grid = document.getElementById('spec-grid');
-      if(!grid) return;
-      grid.innerHTML = '';
-
-      const filtered = filter === 'all' ? specsData : specsData.filter(item => item.category === filter);
-
-      filtered.forEach(item => {
-        const card = document.createElement('div');
-        card.className = 'glass glass-hover rounded-2xl p-5 cursor-pointer transition-all duration-300';
-        card.onclick = () => openModal(item);
-        card.innerHTML = `
-          <div class="text-xs font-semibold text-purple-400 uppercase tracking-wider mb-1">${item.category}</div>
-          <h3 class="font-display font-bold text-lg text-white mb-2">${item.title}</h3>
-          <p class="text-xs text-gray-300">${item.desc}</p>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function filterCategory(category, bannerImg, event) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      if(event && event.currentTarget) {
-        event.currentTarget.classList.add('active');
-      }
-      
-      const banner = document.getElementById('setup-banner-img');
-      if(banner) {
-        banner.style.opacity = '0';
-        setTimeout(() => {
-          banner.src = bannerImg;
-          banner.style.opacity = '1';
-        }, 200);
-      }
-      
-      renderSpecs(category);
-    }
-
-    function openModal(item) {
-      const modal = document.getElementById('specModal');
-      document.getElementById('modal-category').innerText = item.category.toUpperCase();
-      document.getElementById('modal-title').innerText = item.title;
-      
-      const detailsContainer = document.getElementById('modal-details');
-      detailsContainer.innerHTML = '';
-      item.details.forEach(det => {
-        const p = document.createElement('p');
-        p.className = 'flex items-center gap-2';
-        p.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> ${det}`;
-        detailsContainer.appendChild(p);
-      });
-
-      modal.classList.remove('hidden');
-      setTimeout(() => modal.classList.remove('opacity-0'), 10);
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('specModal');
-      modal.classList.add('opacity-0');
-      setTimeout(() => modal.classList.add('hidden'), 300);
-    }
-
-    // Initial render
-    renderSpecs('all');
+    });
   </script>
 </body>
 </html>
