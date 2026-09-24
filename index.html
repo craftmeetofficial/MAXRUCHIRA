@@ -26,16 +26,6 @@
             'neon': '0 0 15px rgba(168, 85, 247, 0.5), 0 0 30px rgba(168, 85, 247, 0.3)',
             'neon-lg': '0 0 25px rgba(168, 85, 247, 0.6), 0 0 50px rgba(168, 85, 247, 0.4)',
             'glow-red': '0 0 20px rgba(239, 68, 68, 0.6), 0 0 40px rgba(239, 68, 68, 0.3)'
-          },
-          animation: {
-            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            'float': 'float 6s ease-in-out infinite'
-          },
-          keyframes: {
-            float: {
-              '0%, 100%': { transform: 'translateY(0)' },
-              '50%': { transform: 'translateY(-10px)' }
-            }
           }
         }
       }
@@ -52,7 +42,6 @@
       position: relative;
     }
 
-    /* BACKGROUND IMAGE STYLES - mr45.PNG with balanced blur & light/dark contrast */
     .bg-video-container {
       position: fixed;
       top: 0;
@@ -61,51 +50,7 @@
       height: 100%;
       z-index: -1;
       pointer-events: none;
-      background-image: url('mr45.PNG');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      filter: blur(4px) contrast(115%) brightness(75%) saturate(110%);
-    }
-
-    /* Elegant light/dark blur overlay for crystal clear text readability */
-    .bg-video-overlay {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at center, rgba(15, 10, 30, 0.55) 0%, rgba(4, 1, 8, 0.82) 100%);
-      z-index: 1;
-    }
-
-    /* INTRO ASSEMBLY ANIMATION STYLES */
-    #assembly-overlay {
-      position: fixed;
-      inset: 0;
-      background: #040108;
-      z-index: 99999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
-    }
-
-    .assemble-part {
-      opacity: 0;
-      transform: scale(0.3) translateY(60px) rotate(15deg);
-      filter: blur(12px);
-      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    #assembly-overlay.assembled .assemble-part {
-      opacity: 1;
-      transform: scale(1) translateY(0) rotate(0deg);
-      filter: blur(0);
-    }
-
-    #assembly-overlay.fade-out {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
+      background: linear-gradient(135deg, #040108 0%, #120822 50%, #040108 100%);
     }
 
     .glass {
@@ -126,23 +71,14 @@
       background-clip: text;
       text-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
     }
-    
     .neon-outline-text {
       color: #ffffff;
-      text-shadow: 
-        0 0 5px rgba(168, 85, 247, 0.8),
-        0 0 10px rgba(168, 85, 247, 0.6),
-        0 0 20px rgba(168, 85, 247, 0.4),
-        -1px -1px 0 #a855f7,  
-         1px -1px 0 #a855f7,
-        -1px  1px 0 #a855f7,
-         1px  1px 0 #a855f7;
+      text-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
       letter-spacing: 0.15em;
     }
-
     .neon-border {
       border: 1px solid rgba(168, 85, 247, 0.4);
-      box-shadow: 0 0 12px rgba(168, 85, 247, 0.25), inset 0 0 12px rgba(168, 85, 247, 0.05);
+      box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
     }
     .tab-btn.active {
       background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(139, 92, 246, 0.4));
@@ -150,385 +86,97 @@
       color: #fff;
       box-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
     }
-    .nav-link {
-      position: relative;
-    }
-    .nav-link::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #a855f7, #ec4899);
-      transition: width 0.3s ease;
-    }
-    .nav-link:hover::after {
-      width: 100%;
-    }
-    
-    .modal-box {
-      transform: scale(0.95);
-      opacity: 0;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease-out;
-    }
-    #specModal:not(.hidden) .modal-box {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    #setup-banner-img {
-      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    }
-
     ::-webkit-scrollbar { width: 8px; }
     ::-webkit-scrollbar-track { background: #0a0612; }
     ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
   </style>
 </head>
 <body class="font-body text-gray-200 antialiased">
 
-  <!-- BACKGROUND IMAGE CONTAINER (mr45.PNG) -->
-  <div class="bg-video-container">
-    <div class="bg-video-overlay"></div>
-  </div>
-
-  <!-- INTRO ASSEMBLY OVERLAY -->
-  <div id="assembly-overlay">
-    <div class="text-center px-4 max-w-xl">
-      <div class="assemble-part mb-6" style="transition-delay: 0.1s;">
-        <span class="inline-block px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass shadow-neon">
-          SYSTEM INITIALIZING...
-        </span>
-      </div>
-
-      <div class="assemble-part mb-4" style="transition-delay: 0.3s;">
-        <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-7xl tracking-wider italic neon-text">
-          MAXRUCHIRA
-        </h1>
-      </div>
-
-      <div class="assemble-part mb-8" style="transition-delay: 0.5s;">
-        <p class="font-display font-bold text-xs sm:text-sm neon-outline-text whitespace-nowrap overflow-hidden text-ellipsis">
-          SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
-        </p>
-      </div>
-
-      <div class="assemble-part w-64 mx-auto" style="transition-delay: 0.7s;">
-        <div class="h-1.5 w-full bg-purple-950 rounded-full overflow-hidden border border-purple-500/30">
-          <div id="assembly-progress" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-0 transition-all duration-700"></div>
-        </div>
-        <p class="text-[10px] text-purple-400 mt-2 tracking-widest uppercase font-mono">Assembling Battlestation Components...</p>
-      </div>
-    </div>
-  </div>
+  <div class="bg-video-container"></div>
 
   <!-- HEADER -->
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-    <div class="glass border-b border-purple-500/20">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center justify-between h-16 md:h-20">
-          <a href="#hero" class="flex items-center gap-2 group">
-            <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-500 shadow-neon group-hover:shadow-neon-lg transition-shadow flex items-center justify-center">
-              <img src="logo.jpg" alt="MAXRUCHIRA Logo" class="w-full h-full object-cover">
-            </div>
-            <span class="font-display font-bold text-xl tracking-widest italic neon-text hidden sm:block">MAXRUCHIRA</span>
-          </a>
+  <header class="fixed top-0 left-0 right-0 z-50 glass border-b border-purple-500/20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16 md:h-20">
+        <a href="#hero" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-full bg-purple-900 border-2 border-purple-500 shadow-neon flex items-center justify-center text-white font-bold">M</div>
+          <span class="font-display font-bold text-xl tracking-widest italic neon-text">MAXRUCHIRA</span>
+        </a>
 
-          <nav class="hidden md:flex items-center gap-8">
-            <a href="#hero" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Home</a>
-            <a href="#live" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Live Stream</a>
-            <a href="#social" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Social</a>
-            <a href="#build" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">My Build</a>
-            <a href="#gallery" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Gallery</a>
-            <a href="#videos" class="nav-link text-sm font-medium text-gray-300 hover:text-white transition">Videos</a>
-          </nav>
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#hero" class="text-sm font-medium text-gray-300 hover:text-white transition">Home</a>
+          <a href="#live" class="text-sm font-medium text-gray-300 hover:text-white transition">Live Stream</a>
+          <a href="#social" class="text-sm font-medium text-gray-300 hover:text-white transition">Social</a>
+          <a href="#build" class="text-sm font-medium text-gray-300 hover:text-white transition">My Build</a>
+          <a href="#videos" class="text-sm font-medium text-gray-300 hover:text-white transition">Videos</a>
+        </nav>
 
-          <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
-             class="hidden sm:inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white text-sm font-semibold shadow-glow-red transition-all hover:scale-105">
-            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            WATCH LIVE
-          </a>
-
-          <button id="menuBtn" class="md:hidden p-2 rounded-lg glass neon-border text-purple-300 hover:text-white transition" aria-label="Toggle menu">
-            <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
-            <svg id="closeIcon" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <div id="mobileMenu" class="md:hidden hidden border-t border-purple-500/20">
-        <div class="px-4 py-4 space-y-3">
-          <a href="#hero" class="block py-2 text-gray-300 hover:text-white font-medium">Home</a>
-          <a href="#live" class="block py-2 text-gray-300 hover:text-white font-medium">Live Stream</a>
-          <a href="#social" class="block py-2 text-gray-300 hover:text-white font-medium">Social</a>
-          <a href="#build" class="block py-2 text-gray-300 hover:text-white font-medium">My Build</a>
-          <a href="#gallery" class="block py-2 text-gray-300 hover:text-white font-medium">Gallery</a>
-          <a href="#videos" class="block py-2 text-gray-300 hover:text-white font-medium">Videos</a>
-          <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
-             class="flex items-center justify-center gap-2 mt-2 px-4 py-3 rounded-lg bg-red-600 text-white font-semibold shadow-glow-red">
-            WATCH LIVE
-          </a>
-        </div>
+        <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank"
+           class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white text-sm font-semibold shadow-glow-red transition">
+          WATCH LIVE
+        </a>
       </div>
     </div>
   </header>
 
   <!-- HERO -->
-  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4 overflow-hidden">
-    <div class="absolute top-1/4 left-1/4 w-72 h-72 bg-purple-600/20 rounded-full blur-3xl animate-pulse-slow pointer-events-none"></div>
-    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-violet-600/15 rounded-full blur-3xl animate-pulse-slow pointer-events-none" style="animation-delay: 1.5s;"></div>
-
-    <div class="relative z-10 max-w-5xl mx-auto text-center">
+  <section id="hero" class="relative min-h-screen flex items-center justify-center pt-24 pb-16 px-4">
+    <div class="max-w-4xl mx-auto text-center">
       <p class="inline-block px-4 py-1.5 mb-6 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass">
         OFFICIAL STREAM PORTAL &amp; GAMING HUB
       </p>
-
-      <h1 class="font-display font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider italic neon-text mb-4 animate-float">
+      <h1 class="font-display font-bold text-6xl sm:text-8xl tracking-wider italic neon-text mb-4">
         MAXRUCHIRA
       </h1>
-
-      <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 whitespace-nowrap overflow-hidden text-ellipsis px-2">
+      <p class="font-display font-bold text-sm neon-outline-text mb-10">
         SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
       </p>
-
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10">
-        <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
-           class="glass glass-hover rounded-2xl px-6 py-4 w-full sm:w-64 transition-all duration-300 hover:-translate-y-1">
-          <div class="flex items-center justify-center gap-3 mb-1">
-            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            <span class="text-sm text-gray-300 font-medium">Main Channel</span>
-          </div>
-          <p class="text-2xl font-display font-bold text-white">4.3K</p>
-          <p class="text-xs text-purple-300">Subscribers</p>
-        </a>
-
-        <a href="https://www.youtube.com/@MAXRUCHIRAVLOGS" target="_blank" rel="noopener"
-           class="glass glass-hover rounded-2xl px-6 py-4 w-full sm:w-64 transition-all duration-300 hover:-translate-y-1">
-          <div class="flex items-center justify-center gap-3 mb-1">
-            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            <span class="text-sm text-gray-300 font-medium">Vlog Channel</span>
-          </div>
-          <p class="text-2xl font-display font-bold text-white">40</p>
-          <p class="text-xs text-purple-300">Subscribers</p>
-        </a>
-      </div>
-
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-        <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-3 px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-lg shadow-glow-red hover:shadow-[0_0_40px_rgba(239,68,68,0.7)] hover:scale-105 transition-all duration-300">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          WATCH LIVE
+        <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank"
+           class="px-8 py-4 rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-lg shadow-glow-red hover:scale-105 transition">
+          WATCH LIVE YOUTUBE
         </a>
-        <a href="https://discord.gg/8PMyfSGzEA" target="_blank" rel="noopener"
-           class="inline-flex items-center gap-3 px-8 py-4 rounded-xl glass neon-border text-white font-bold text-lg hover:bg-purple-600/30 hover:shadow-neon transition-all duration-300 hover:scale-105">
-          <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
+        <a href="https://discord.gg/8PMyfSGzEA" target="_blank"
+           class="px-8 py-4 rounded-xl glass neon-border text-white font-bold text-lg hover:bg-purple-600/30 transition">
           DISCORD COMMUNITY
         </a>
       </div>
     </div>
   </section>
 
-  <!-- LIVE STREAM EMBED SECTION (Channel ID added here) -->
-  <section id="live" class="py-12 px-4 max-w-5xl mx-auto relative z-10">
+  <!-- LIVE STREAM -->
+  <section id="live" class="py-12 px-4 max-w-5xl mx-auto">
     <div class="glass rounded-3xl p-6 border border-purple-500/40 shadow-neon">
-      <div class="flex items-center justify-between mb-4">
-        <div class="flex items-center gap-3">
-          <span class="w-3 h-3 rounded-full bg-red-600 animate-ping"></span>
-          <h2 class="font-display font-bold text-xl text-white">LIVE STREAMING / LATEST STREAM</h2>
-        </div>
-        <span class="px-3 py-1 bg-purple-600/30 border border-purple-400/30 rounded-full text-xs font-semibold text-purple-300">DYNAMIC PLAYER</span>
+      <h2 class="font-display font-bold text-xl text-white mb-4">LIVE STREAMING / LATEST STREAM</h2>
+      <div class="aspect-video w-full rounded-2xl overflow-hidden border border-purple-500/30">
+        <iframe class="w-full h-full" src="https://www.youtube.com/embed/live_stream?channel=UCpRnLw-i6ep13w_vh9M9k-g" title="Live Stream" allowfullscreen></iframe>
       </div>
-      <div class="aspect-video w-full rounded-2xl overflow-hidden border border-purple-500/30 shadow-[0_0_30px_rgba(168,85,247,0.25)]">
-        <iframe 
-          id="live-iframe"
-          class="w-full h-full"
-          src="https://www.youtube.com/embed/live_stream?channel=UCpRnLw-i6ep13w_vh9M9k-g" 
-          title="MAXRUCHIRA Live Stream" 
-          frameborder="0" 
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-          allowfullscreen>
-        </iframe>
-      </div>
-      <p class="text-xs text-gray-300 mt-3 text-center">Automatically displays live stream thumbnail &amp; active stream when MAXRUCHIRA goes live on YouTube.</p>
     </div>
   </section>
 
   <!-- SOCIAL -->
-  <section id="social" class="py-16 px-4 relative z-10">
-    <div class="max-w-5xl mx-auto">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">Connect With Me</h2>
-      <p class="text-center text-gray-300 mb-10">Join the community across platforms</p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
-           class="glass glass-hover rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 group">
-          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-red-600/20 flex items-center justify-center group-hover:bg-red-600/40 transition">
-            <svg class="w-7 h-7 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </div>
-          <h3 class="font-semibold text-white mb-1">YouTube Main</h3>
-          <p class="text-sm text-gray-300">@MAXRUCHIRA</p>
-          <p class="text-xs text-purple-400 mt-2">4.3K Subs</p>
-        </a>
-
-        <a href="https://www.youtube.com/@MAXRUCHIRAVLOGS" target="_blank" rel="noopener"
-           class="glass glass-hover rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 group">
-          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-red-600/20 flex items-center justify-center group-hover:bg-red-600/40 transition">
-            <svg class="w-7 h-7 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-          </div>
-          <h3 class="font-semibold text-white mb-1">YouTube Vlogs</h3>
-          <p class="text-sm text-gray-300">@MAXRUCHIRA VLOGS</p>
-          <p class="text-xs text-purple-400 mt-2">40 Subs</p>
-        </a>
-
-        <a href="https://facebook.com/maxruchia/?modal=admin_todo_tour" target="_blank" rel="noopener"
-           class="glass glass-hover rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 group">
-          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-blue-600/20 flex items-center justify-center group-hover:bg-blue-600/40 transition">
-            <svg class="w-7 h-7 text-blue-500" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </div>
-          <h3 class="font-semibold text-white mb-1">Facebook</h3>
-          <p class="text-sm text-gray-300">maxruchia</p>
-        </a>
-
-        <a href="https://discord.gg/8PMyfSGzEA" target="_blank" rel="noopener"
-           class="glass glass-hover rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-2 group">
-          <div class="w-14 h-14 mx-auto mb-4 rounded-full bg-indigo-600/20 flex items-center justify-center group-hover:bg-indigo-600/40 transition">
-            <svg class="w-7 h-7 text-indigo-400" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          </div>
-          <h3 class="font-semibold text-white mb-1">Discord</h3>
-          <p class="text-sm text-gray-300">Community Server</p>
-        </a>
-      </div>
+  <section id="social" class="py-16 px-4 max-w-5xl mx-auto">
+    <h2 class="font-display font-bold text-3xl text-center mb-10 neon-text">Connect With Me</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" class="glass glass-hover rounded-2xl p-6 text-center transition">
+        <h3 class="font-semibold text-white mb-1">YouTube Main</h3>
+        <p class="text-xs text-purple-400">@MAXRUCHIRA</p>
+      </a>
+      <a href="https://facebook.com/maxruchia" target="_blank" class="glass glass-hover rounded-2xl p-6 text-center transition">
+        <h3 class="font-semibold text-white mb-1">Facebook</h3>
+        <p class="text-xs text-purple-400">maxruchia</p>
+      </a>
+      <a href="https://discord.gg/8PMyfSGzEA" target="_blank" class="glass glass-hover rounded-2xl p-6 text-center transition">
+        <h3 class="font-semibold text-white mb-1">Discord</h3>
+        <p class="text-xs text-purple-400">Community Server</p>
+      </a>
     </div>
   </section>
-
-  <!-- MY BUILD -->
-  <section id="build" class="py-16 px-4 relative z-10">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">My Build</h2>
-      <p class="text-center text-gray-300 mb-8">Streaming &amp; Gaming Setup Specs (Click any item for details)</p>
-
-      <div class="mb-10 glass rounded-3xl overflow-hidden border border-purple-500/40 p-2 shadow-neon">
-        <img id="setup-banner-img" src="1.jpeg" alt="MAXRUCHIRA Gaming Setup" class="w-full h-auto max-h-[500px] object-cover rounded-2xl" onerror="this.src='https://via.placeholder.com/1200x600/100820/a855f7?text=MAXRUCHIRA+GAMING+SETUP';">
-      </div>
-
-      <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
-        <button onclick="filterCategory('all', '1.jpeg', event)" class="tab-btn active px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">All Items</button>
-        <button onclick="filterCategory('pc', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Components</button>
-        <button onclick="filterCategory('peripherals', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Peripherals</button>
-        <button onclick="filterCategory('consoles', '2.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Consoles &amp; Racing</button>
-        <button onclick="filterCategory('pcspec', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Spec</button>
-      </div>
-
-      <div id="spec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-      </div>
-    </div>
-  </section>
-
-  <!-- SETUP GALLERY SECTION -->
-  <section id="gallery" class="py-16 px-4 relative z-10 bg-purple-950/10">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">Setup Gallery</h2>
-      <p class="text-center text-gray-300 mb-10">A closer look at the battlestation</p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon group">
-          <img src="1.jpeg" alt="Setup Angle 1" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Battlestation+Main';">
-          <div class="p-4">
-            <h3 class="font-semibold text-white text-sm">Main Streaming Setup</h3>
-            <p class="text-xs text-gray-300 mt-1">Triple Monitors &amp; RGB Atmosphere</p>
-          </div>
-        </div>
-
-        <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon group">
-          <img src="3.jpeg" alt="Racing Rig" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Sim+Racing+Rig';">
-          <div class="p-4">
-            <h3 class="font-semibold text-white text-sm">Racing &amp; Simulator Cockpit</h3>
-            <p class="text-xs text-gray-300 mt-1">Logitech G923 Steering &amp; Pedals</p>
-          </div>
-        </div>
-
-        <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon group">
-          <img src="2.jpeg" alt="Audio & Mic Setup" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Console+%26+Audio';">
-          <div class="p-4">
-            <h3 class="font-semibold text-white text-sm">PS5 Slim &amp; Audio Gear</h3>
-            <p class="text-xs text-gray-300 mt-1">Elgato Capture &amp; Broadcast Setup</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FEATURED VIDEOS -->
-  <section id="videos" class="py-16 px-4 relative z-10">
-    <div class="max-w-6xl mx-auto">
-      <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">Featured Videos</h2>
-      <p class="text-center text-gray-300 mb-10">Latest gameplay &amp; series highlights</p>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon">
-          <div class="aspect-video w-full">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/PeN53hiPt7M" title="MAXRUCHIRA Video 1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon">
-          <div class="aspect-video w-full">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/b48padrIQVk" title="MAXRUCHIRA Video 2" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-        <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon">
-          <div class="aspect-video w-full">
-            <iframe class="w-full h-full" src="https://www.youtube.com/embed/dT33CPVelcM" title="MAXRUCHIRA Video 3" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- SPEC DETAILS MODAL -->
-  <div id="specModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
-    <div class="modal-box glass border-2 border-purple-500/60 rounded-3xl max-w-lg w-full p-6 relative shadow-neon-lg">
-      <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-300 hover:text-white p-2 rounded-full glass neon-border">
-        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
-      </button>
-
-      <div class="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-1" id="modal-category">Category</div>
-      <h3 class="text-2xl font-display font-bold text-white mb-4 neon-text" id="modal-title">Component Name</h3>
-      
-      <div class="space-y-3 text-sm text-gray-200 border-t border-purple-500/20 pt-4" id="modal-details">
-      </div>
-
-      <div class="mt-6 text-right">
-        <button onclick="closeModal()" class="px-5 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition shadow-neon">
-          Close Spec
-        </button>
-      </div>
-    </div>
-  </div>
 
   <!-- FOOTER -->
-  <footer class="border-t border-purple-500/20 pt-12 pb-6 px-4 glass mt-12 relative z-10">
-    <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
-      <div class="flex items-center gap-2 mb-4">
-        <div class="w-8 h-8 rounded-full overflow-hidden border border-purple-500 flex items-center justify-center">
-          <img src="logo.jpg" alt="Logo" class="w-full h-full object-cover">
-        </div>
-        <span class="font-display font-bold text-lg italic text-white">MAXRUCHIRA</span>
-      </div>
-      <p class="text-sm text-gray-300 mb-6 max-w-md">Sri Lankan Content Creator, Streamer, and Gaming Enthusiast.</p>
-      <div class="flex items-center gap-6 mb-8 text-gray-300">
-        <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" class="hover:text-purple-400 transition">YouTube</a>
-        <a href="https://www.youtube.com/@MAXRUCHIRAVLOGS" target="_blank" class="hover:text-purple-400 transition">Vlogs</a>
-        <a href="https://facebook.com/maxruchia/?modal=admin_todo_tour" target="_blank" class="hover:text-purple-400 transition">Facebook</a>
-        <a href="https://discord.gg/8PMyfSGzEA" target="_blank" class="hover:text-purple-400 transition">Discord</a>
-      </div>
-      <p class="text-xs text-gray-400">© 2026 MAXRUCHIRA. All rights reserved.</p>
-
-      <div class="mt-8 pt-4 border-t border-purple-500/10 w-full text-center">
-        <p class="text-xs font-display font-bold tracking-widest text-purple-400/80 hover:text-purple-300 transition">MAXRUCHIRA STREAM PORTAL</p>
-      </div>
-    </div>
+  <footer class="border-t border-purple-500/20 py-8 px-4 glass text-center">
+    <p class="text-xs text-gray-400">© 2026 MAXRUCHIRA. All rights reserved.</p>
   </footer>
 
 </body>
