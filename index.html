@@ -30,43 +30,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- External Separated CSS File -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body class="font-body text-gray-200 antialiased selection:bg-purple-500 selection:text-white">
 
   <!-- BACKGROUND FIXED IMAGE -->
   <div class="bg-video-container">
     <div class="bg-video-overlay"></div>
-  </div>
-
-  <!-- INTRO ASSEMBLY OVERLAY -->
-  <div id="assembly-overlay">
-    <div class="text-center px-4 max-w-xl">
-      <div class="assemble-part mb-6">
-        <span class="inline-block px-4 py-1.5 text-xs font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass">
-          SYSTEM INITIALIZING...
-        </span>
-      </div>
-
-      <div class="assemble-part mb-4">
-        <h1 class="font-display font-bold text-4xl sm:text-6xl md:text-7xl tracking-wider italic neon-text">
-          MAXRUCHIRA
-        </h1>
-      </div>
-
-      <div class="assemble-part mb-8 px-2">
-        <p class="font-display font-bold text-xs sm:text-sm neon-outline-text">
-          SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
-        </p>
-      </div>
-
-      <div class="assemble-part w-64 mx-auto">
-        <div class="h-1.5 w-full bg-purple-950 rounded-full overflow-hidden border border-purple-500/30">
-          <div id="assembly-progress" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-0 transition-all duration-300"></div>
-        </div>
-        <p class="text-[10px] text-purple-400 mt-2 tracking-widest uppercase font-mono">Loading Components...</p>
-      </div>
-    </div>
   </div>
 
   <!-- HEADER -->
@@ -120,31 +90,32 @@
     </div>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION WITH SLIDE-IN ANIMATIONS -->
   <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
     <div class="relative z-10 max-w-5xl mx-auto text-center w-full">
       
-      <!-- Left Animation Text/Badge -->
+      <!-- Badge comes from Left -->
       <div class="animate-left">
         <p class="inline-block px-4 py-1.5 mb-6 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass">
           OFFICIAL STREAM PORTAL &amp; GAMING HUB
         </p>
       </div>
 
-      <!-- Right Animation Heading -->
+      <!-- Heading comes from Right -->
       <div class="animate-right">
         <h1 class="font-display font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider italic neon-text mb-4">
           MAXRUCHIRA
         </h1>
       </div>
 
-      <!-- Top Animation Subtitle -->
+      <!-- Subtitle comes from Top -->
       <div class="animate-top">
         <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 px-2 leading-relaxed">
           SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
         </p>
       </div>
 
+      <!-- Subscriber Boxes come from Left -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 w-full animate-left">
         <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
            class="glass glass-hover rounded-2xl p-5 sm:px-6 sm:py-4 w-full sm:w-64 transition-all">
@@ -167,6 +138,7 @@
         </a>
       </div>
 
+      <!-- Action Buttons come from Right -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full animate-right">
         <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
            class="inline-flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-base sm:text-lg transition-all">
@@ -393,7 +365,7 @@
   </footer>
 
   <script>
-    // Lazy Load Iframes and Optimize Mobile Performance
+    // Lazy Load Iframes
     document.addEventListener("DOMContentLoaded", function() {
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -432,24 +404,6 @@
       });
     });
 
-    // Fast Assembly Intro Animation
-    window.addEventListener('load', () => {
-      const overlay = document.getElementById('assembly-overlay');
-      const progressBar = document.getElementById('assembly-progress');
-      
-      setTimeout(() => {
-        progressBar.style.width = '100%';
-      }, 100);
-
-      setTimeout(() => {
-        overlay.classList.add('assembled');
-      }, 200);
-
-      setTimeout(() => {
-        overlay.classList.add('fade-out');
-      }, 700);
-    });
-
     const specsData = [
       { id: 1, category: 'pc', catName: 'PC Components', title: 'AMD Ryzen 9 3900X', desc: 'Processor (CPU) with high core count for heavy multi-tasking, gaming, and content creation.', specs: ['12 Cores & 24 Threads', 'High Performance AM4 Socket', 'Optimized for 1080p/1440p gaming'] },
       { id: 2, category: 'pc', catName: 'PC Components', title: 'Asus TUF Gaming B550M-Plus (Wi-Fi)', desc: 'Motherboard with built-in Wi-Fi and robust power delivery for reliable gaming.', specs: ['AMD AM4 Socket', 'Built-in Wi-Fi & Bluetooth', 'Military-grade TUF Components'] },
@@ -476,7 +430,7 @@
       const grid = document.getElementById('spec-grid');
       grid.innerHTML = '';
 
-      const filtered = category === 'all' ? specsData : specsData.filter(item => item.category === category);
+      const filtered = category === 'all' ? specsData : specsData.get ? specsData : specsData.filter(item => item.category === category);
 
       filtered.forEach(item => {
         const card = document.createElement('div');
