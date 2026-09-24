@@ -97,7 +97,7 @@
       width: 100%;
     }
     
-    /* SMOOTH MODAL ANIMATION (NO SHAKE) */
+    /* SMOOTH MODAL ANIMATION */
     .modal-box {
       transform: scale(0.95);
       opacity: 0;
@@ -106,6 +106,11 @@
     #specModal:not(.hidden) .modal-box {
       transform: scale(1);
       opacity: 1;
+    }
+
+    /* SMOOTH IMAGE TRANSITION */
+    #setup-banner-img {
+      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
     }
 
     ::-webkit-scrollbar { width: 8px; }
@@ -301,17 +306,17 @@
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">My Build</h2>
       <p class="text-center text-gray-400 mb-8">Streaming &amp; Gaming Setup Specs (Click any item for details)</p>
 
-      <!-- SETUP PHOTO BANNER -->
+      <!-- SETUP DYNAMIC PHOTO BANNER (Changes based on selected tab) -->
       <div class="mb-10 glass rounded-3xl overflow-hidden border border-purple-500/40 p-2 shadow-neon">
-        <img src="images/setup-1.jpg" alt="MAXRUCHIRA Gaming Setup" class="w-full h-auto max-h-[500px] object-cover rounded-2xl" onerror="this.src='https://via.placeholder.com/1200x600/100820/a855f7?text=MAXRUCHIRA+GAMING+SETUP';">
+        <img id="setup-banner-img" src="1.jpg" alt="MAXRUCHIRA Gaming Setup" class="w-full h-auto max-h-[500px] object-cover rounded-2xl" onerror="this.src='https://via.placeholder.com/1200x600/100820/a855f7?text=MAXRUCHIRA+GAMING+SETUP';">
       </div>
 
       <!-- FILTER TABS -->
       <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
-        <button onclick="filterCategory('all', event)" class="tab-btn active px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">All Items</button>
-        <button onclick="filterCategory('pc', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Components</button>
-        <button onclick="filterCategory('peripherals', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Peripherals</button>
-        <button onclick="filterCategory('consoles', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Consoles &amp; Racing</button>
+        <button onclick="filterCategory('all', '1.jpg', event)" class="tab-btn active px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">All Items</button>
+        <button onclick="filterCategory('pc', '1.jpg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Components</button>
+        <button onclick="filterCategory('peripherals', '1.jpg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Peripherals</button>
+        <button onclick="filterCategory('consoles', '2.jpg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Consoles &amp; Racing</button>
       </div>
 
       <!-- SPEC CARDS GRID -->
@@ -329,7 +334,7 @@
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon group">
-          <img src="images/setup-1.jpg" alt="Setup Angle 1" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Battlestation+Main';">
+          <img src="1.jpg" alt="Setup Angle 1" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Battlestation+Main';">
           <div class="p-4">
             <h3 class="font-semibold text-white text-sm">Main Streaming Setup</h3>
             <p class="text-xs text-gray-400 mt-1">Triple Monitors &amp; RGB Atmosphere</p>
@@ -337,7 +342,7 @@
         </div>
 
         <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon group">
-          <img src="images/setup-2.jpg" alt="Racing Rig" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Sim+Racing+Rig';">
+          <img src="3.jpg" alt="Racing Rig" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Sim+Racing+Rig';">
           <div class="p-4">
             <h3 class="font-semibold text-white text-sm">Racing &amp; Simulator Cockpit</h3>
             <p class="text-xs text-gray-400 mt-1">Logitech G923 Steering &amp; Pedals</p>
@@ -345,7 +350,7 @@
         </div>
 
         <div class="glass rounded-2xl overflow-hidden border border-purple-500/30 shadow-neon group">
-          <img src="images/setup-3.jpg" alt="Audio & Mic Setup" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Console+%26+Audio';">
+          <img src="2.jpg" alt="Audio & Mic Setup" class="w-full h-64 object-cover group-hover:scale-105 transition duration-500" onerror="this.src='https://via.placeholder.com/600x400/100820/a855f7?text=Console+%26+Audio';">
           <div class="p-4">
             <h3 class="font-semibold text-white text-sm">PS5 &amp; Audio Gear</h3>
             <p class="text-xs text-gray-400 mt-1">Elgato Capture &amp; Broadcast Setup</p>
@@ -355,7 +360,7 @@
     </div>
   </section>
 
-  <!-- FEATURED VIDEOS (DYNAMIC VIA YOUTUBE API) -->
+  <!-- FEATURED VIDEOS -->
   <section id="videos" class="py-16 px-4">
     <div class="max-w-6xl mx-auto">
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text">Featured Videos</h2>
@@ -369,7 +374,7 @@
     </div>
   </section>
 
-  <!-- SPEC DETAILS MODAL (POPUP WITH SMOOTH FADE & ZOOM ANIMATION) -->
+  <!-- SPEC DETAILS MODAL -->
   <div id="specModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
     <div class="modal-box glass border-2 border-purple-500/60 rounded-3xl max-w-lg w-full p-6 relative shadow-neon-lg">
       <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white p-2 rounded-full glass neon-border">
@@ -456,11 +461,24 @@
       `).join('');
     }
 
-    function filterCategory(category, event) {
+    function filterCategory(category, bannerImg, event) {
+      // Update Active Tab Button styling
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
       if (event && event.target) {
         event.target.classList.add('active');
       }
+
+      // Smoothly change the Setup Banner Image with a subtle fade effect
+      const bannerImgElement = document.getElementById('setup-banner-img');
+      if (bannerImgElement) {
+        bannerImgElement.style.opacity = '0';
+        setTimeout(() => {
+          bannerImgElement.src = bannerImg;
+          bannerImgElement.style.opacity = '1';
+        }, 200);
+      }
+
+      // Filter specs
       if (category === 'all') {
         renderSpecs(specsData);
       } else {
@@ -493,7 +511,7 @@
 
     // Mobile Menu Toggle
     const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('menuMenu') || document.getElementById('mobileMenu');
+    const mobileMenu = document.getElementById('mobileMenu');
     const menuIcon = document.getElementById('menuIcon');
     const closeIcon = document.getElementById('closeIcon');
 
