@@ -1,4 +1,4 @@
-/* --- Base Styles & Optimizations --- */
+/* --- Base Styles --- */
 body {
   background-color: #040108;
   min-height: 100vh;
@@ -27,37 +27,7 @@ body {
   z-index: 1;
 }
 
-/* --- Intro Assembly Animation --- */
-#assembly-overlay {
-  position: fixed;
-  inset: 0;
-  background: #040108;
-  z-index: 99999;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transition: opacity 0.4s ease, visibility 0.4s;
-}
-
-.assemble-part {
-  opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s ease;
-}
-
-#assembly-overlay.assembled .assemble-part {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-#assembly-overlay.fade-out {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-/* --- Glassmorphism (Mobile Optimized) --- */
+/* --- Glassmorphism --- */
 .glass {
   background: rgba(15, 10, 30, 0.9);
   border: 1px solid rgba(168, 85, 247, 0.3);
@@ -95,28 +65,14 @@ body {
   color: #fff;
 }
 
-.modal-box {
-  transform: scale(0.95);
-  opacity: 0;
-  transition: transform 0.2s ease, opacity 0.2s ease;
-}
-#specModal:not(.hidden) .modal-box {
-  transform: scale(1);
-  opacity: 1;
-}
-
-#setup-banner-img {
-  transition: opacity 0.2s ease-in-out;
-}
-
-/* --- Entrance Slide-In Animations (Eka Pathin Enna) --- */
+/* --- Entrance Slide-In Animations (Aniwa Penna Oone Classes) --- */
 @keyframes slideFromLeft {
-  0% { opacity: 0; transform: translateX(-50px); }
+  0% { opacity: 0; transform: translateX(-60px); }
   100% { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes slideFromRight {
-  0% { opacity: 0; transform: translateX(50px); }
+  0% { opacity: 0; transform: translateX(60px); }
   100% { opacity: 1; transform: translateX(0); }
 }
 
@@ -126,15 +82,15 @@ body {
 }
 
 .animate-left {
-  animation: slideFromLeft 0.8s ease-out forwards;
+  animation: slideFromLeft 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-right {
-  animation: slideFromRight 0.8s ease-out forwards;
+  animation: slideFromRight 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .animate-top {
-  animation: slideFromTop 0.8s ease-out forwards;
+  animation: slideFromTop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 /* Scrollbar Customization */
