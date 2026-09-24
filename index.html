@@ -52,7 +52,41 @@
         radial-gradient(ellipse 60% 40% at 80% 50%, rgba(139, 92, 246, 0.15), transparent),
         radial-gradient(ellipse 50% 30% at 20% 80%, rgba(236, 72, 153, 0.1), transparent);
       min-height: 100vh;
+      overflow-x: hidden;
     }
+
+    /* INTRO ASSEMBLY ANIMATION STYLES */
+    #assembly-overlay {
+      position: fixed;
+      inset: 0;
+      background: #040108;
+      z-index: 99999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;
+    }
+
+    .assemble-part {
+      opacity: 0;
+      transform: scale(0.3) translateY(60px) rotate(15deg);
+      filter: blur(12px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    #assembly-overlay.assembled .assemble-part {
+      opacity: 1;
+      transform: scale(1) translateY(0) rotate(0deg);
+      filter: blur(0);
+    }
+
+    #assembly-overlay.fade-out {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
     .glass {
       background: rgba(15, 10, 30, 0.55);
       backdrop-filter: blur(16px);
@@ -134,6 +168,40 @@
 </head>
 <body class="font-body text-gray-200 antialiased">
 
+  <!-- INTRO ASSEMBLY OVERLAY (කැලි කැලි එකතු වී හැදෙන animation එක) -->
+  <div id="assembly-overlay">
+    <div class="text-center px-4 max-w-xl">
+      <!-- Part 1: Badge -->
+      <div class="assemble-part mb-6" style="transition-delay: 0.1s;">
+        <span class="inline-block px-4 py-1.5 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass shadow-neon">
+          SYSTEM INITIALIZING...
+        </span>
+      </div>
+
+      <!-- Part 2: Title Logo -->
+      <div class="assemble-part mb-4" style="transition-delay: 0.3s;">
+        <h1 class="font-display font-bold text-5xl sm:text-6xl md:text-7xl tracking-wider italic neon-text">
+          MAXRUCHIRA
+        </h1>
+      </div>
+
+      <!-- Part 3: Subtitle -->
+      <div class="assemble-part mb-8" style="transition-delay: 0.5s;">
+        <p class="font-display font-bold text-xs sm:text-sm neon-outline-text whitespace-nowrap overflow-hidden text-ellipsis">
+          SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
+        </p>
+      </div>
+
+      <!-- Part 4: Loading progress bar & assemble pieces effect -->
+      <div class="assemble-part w-64 mx-auto" style="transition-delay: 0.7s;">
+        <div class="h-1.5 w-full bg-purple-950 rounded-full overflow-hidden border border-purple-500/30">
+          <div id="assembly-progress" class="h-full bg-gradient-to-r from-purple-500 to-pink-500 w-0 transition-all duration-700"></div>
+        </div>
+        <p class="text-[10px] text-purple-400 mt-2 tracking-widest uppercase font-mono">Assembling Battlestation Components...</p>
+      </div>
+    </div>
+  </div>
+
   <!-- HEADER -->
   <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
     <div class="glass border-b border-purple-500/20">
@@ -199,7 +267,7 @@
         MAXRUCHIRA
       </h1>
 
-      <!-- Updated Subtitle: smaller, single line, with neon purple outline/glow effect -->
+      <!-- Subtitle with Neon Purple Outline -->
       <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 whitespace-nowrap overflow-hidden text-ellipsis px-2">
         SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
       </p>
@@ -449,8 +517,29 @@
     </div>
   </footer>
 
-  <!-- JAVASCRIPT & SPEC DATA -->
+  <!-- JAVASCRIPT & INTRO ASSEMBLY CONTROLLER -->
   <script>
+    // Intro Assembly Animation Controller
+    window.addEventListener('DOMContentLoaded', () => {
+      const overlay = document.getElementById('assembly-overlay');
+      const progressBar = document.getElementById('assembly-progress');
+
+      // Progress bar fill animation
+      setTimeout(() => {
+        progressBar.style.width = '100%';
+      }, 100);
+
+      // Trigger assembling pieces
+      setTimeout(() => {
+        overlay.classList.add('assembled');
+      }, 300);
+
+      // Fade out and remove intro overlay after assembly completes
+      setTimeout(() => {
+        overlay.classList.add('fade-out');
+      }, 1500);
+    });
+
     const specsData = [
       { id: 1, category: 'pc', type: 'Processor', name: 'AMD Ryzen 9 3900X', desc: '12 Cores, 24 Threads, 4.6GHz Boost Clock. Perfect for heavy gaming and 1080p60 streaming simultaneously.', isPcSpec: true },
       { id: 2, category: 'pc', type: 'Motherboard', name: 'Asus TUF Gaming B550M-Plus (Wi-Fi)', desc: 'Military-grade TUF components, PCIe 4.0 support, Wi-Fi 6, and robust VRM power delivery.', isPcSpec: true },
