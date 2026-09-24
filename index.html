@@ -29,120 +29,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      background-color: #040108;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
-    }
-
-    .bg-video-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-      pointer-events: none;
-      background-image: url('mr45.PNG');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-
-    .bg-video-overlay {
-      position: absolute;
-      inset: 0;
-      background: rgba(4, 1, 8, 0.85);
-      z-index: 1;
-    }
-
-    #assembly-overlay {
-      position: fixed;
-      inset: 0;
-      background: #040108;
-      z-index: 99999;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.4s ease, visibility 0.4s;
-    }
-
-    .assemble-part {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.5s ease;
-    }
-
-    #assembly-overlay.assembled .assemble-part {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    #assembly-overlay.fade-out {
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-    }
-
-    .glass {
-      background: rgba(15, 10, 30, 0.9);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-    }
-    @media (min-width: 768px) {
-      .glass {
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
-      }
-    }
-    
-    .glass-hover:hover {
-      border-color: rgba(168, 85, 247, 0.7);
-    }
-    .neon-text {
-      background: linear-gradient(135deg, #e879f9, #a855f7, #6366f1);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-    
-    .neon-outline-text {
-      color: #ffffff;
-      letter-spacing: 0.1em;
-    }
-
-    .neon-border {
-      border: 1px solid rgba(168, 85, 247, 0.4);
-    }
-    .tab-btn.active {
-      background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(139, 92, 246, 0.4));
-      border-color: #a855f7;
-      color: #fff;
-    }
-    .nav-link {
-      position: relative;
-    }
-    
-    .modal-box {
-      transform: scale(0.95);
-      opacity: 0;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-    #specModal:not(.hidden) .modal-box {
-      transform: scale(1);
-      opacity: 1;
-    }
-
-    #setup-banner-img {
-      transition: opacity 0.2s ease-in-out;
-    }
-
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #0a0612; }
-    ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 3px; }
-  </style>
+  <!-- External Separated CSS File -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body class="font-body text-gray-200 antialiased selection:bg-purple-500 selection:text-white">
 
@@ -182,7 +70,7 @@
   </div>
 
   <!-- HEADER -->
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-top">
     <div class="glass border-b border-purple-500/20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 md:h-20">
@@ -235,19 +123,29 @@
   <!-- HERO SECTION -->
   <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
     <div class="relative z-10 max-w-5xl mx-auto text-center w-full">
-      <p class="inline-block px-4 py-1.5 mb-6 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass">
-        OFFICIAL STREAM PORTAL &amp; GAMING HUB
-      </p>
+      
+      <!-- Left Animation Text/Badge -->
+      <div class="animate-left">
+        <p class="inline-block px-4 py-1.5 mb-6 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass">
+          OFFICIAL STREAM PORTAL &amp; GAMING HUB
+        </p>
+      </div>
 
-      <h1 class="font-display font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider italic neon-text mb-4">
-        MAXRUCHIRA
-      </h1>
+      <!-- Right Animation Heading -->
+      <div class="animate-right">
+        <h1 class="font-display font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider italic neon-text mb-4">
+          MAXRUCHIRA
+        </h1>
+      </div>
 
-      <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 px-2 leading-relaxed">
-        SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
-      </p>
+      <!-- Top Animation Subtitle -->
+      <div class="animate-top">
+        <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 px-2 leading-relaxed">
+          SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
+        </p>
+      </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 w-full">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 w-full animate-left">
         <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
            class="glass glass-hover rounded-2xl p-5 sm:px-6 sm:py-4 w-full sm:w-64 transition-all">
           <div class="flex items-center justify-center gap-3 mb-1">
@@ -269,7 +167,7 @@
         </a>
       </div>
 
-      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full">
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full animate-right">
         <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
            class="inline-flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-base sm:text-lg transition-all">
           <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
