@@ -58,18 +58,21 @@
       top: 0;
       left: 0;
       width: 100%;
-      height: 100%;
+      height: 100vh;
       overflow: hidden;
       z-index: -1;
       pointer-events: none;
     }
 
     .bg-video-container video {
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       object-fit: cover;
-      /* වඩිය පෙනෙන්නේ නැති වෙන්න සහ තීම් එකට සෙට් වෙන්න opacity සහ dark overlay එකක් */
-      opacity: 0.22; 
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      opacity: 0.35; /* වීඩියෝ එකේ පෙනෙන ස්වභාවය (Brightness/Opacity) සරු කරන්න මෙක වෙනස් කරන්න පුළුවන් */
       filter: contrast(120%) brightness(70%) saturate(120%);
     }
 
@@ -79,6 +82,7 @@
       inset: 0;
       background: radial-gradient(ellipse 80% 50% at 50% 50%, rgba(4, 1, 8, 0.65), rgba(4, 1, 8, 0.92));
       z-index: 1;
+      pointer-events: none;
     }
 
     /* INTRO ASSEMBLY ANIMATION STYLES */
@@ -196,9 +200,9 @@
   <!-- BACKGROUND VIDEO BACKGROUND -->
   <div class="bg-video-container">
     <div class="bg-video-overlay"></div>
-    <!-- මෙහි src එකට ඔබ කැමති gaming හෝ neon loop වීඩියෝ ලින්ක් එකක් (mp4) දාන්න පුළුවන් -->
     <video autoplay muted loop playsinline>
-      <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-screens-with-code-31910-large.mp4" type="video/mp4">
+      <source src="mr2.mp4" type="video/mp4">
+      ඔයාගේ බ්‍රව්සර් එක වීඩියෝ ටැග් එක සපෝට් කරන්නේ නැහැ.
     </video>
   </div>
 
@@ -529,128 +533,11 @@
         <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" class="hover:text-purple-400 transition">YouTube</a>
         <a href="https://www.youtube.com/@MAXRUCHIRAVLOGS" target="_blank" class="hover:text-purple-400 transition">Vlogs</a>
         <a href="https://facebook.com/maxruchia/?modal=admin_todo_tour" target="_blank" class="hover:text-purple-400 transition">Facebook</a>
-        <a href="https://discord.gg/8PMyfSGzEA" target="_blank" class="hover:text-purple-400 transition">Discord</a>
+        <a href="https://colors.com/maxruchia/?modal=admin_todo_tour" target="_blank" class="hover:text-purple-400 transition">Discord</a>
       </div>
       <p class="text-xs text-gray-500">© 2026 MAXRUCHIRA. All rights reserved.</p>
-
-      <div class="mt-8 pt-4 border-t border-purple-500/10 w-full text-center">
-        <p class="text-xs font-display font-bold tracking-widest text-purple-400/80 hover:text-purple-300 transition shadow-neon">
-          MR KAVEEYA BRO DEVOLOP
-        </p>
-      </div>
     </div>
   </footer>
 
-  <!-- JAVASCRIPT & INTRO ASSEMBLY CONTROLLER -->
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const overlay = document.getElementById('assembly-overlay');
-      const progressBar = document.getElementById('assembly-progress');
-
-      setTimeout(() => {
-        progressBar.style.width = '100%';
-      }, 100);
-
-      setTimeout(() => {
-        overlay.classList.add('assembled');
-      }, 300);
-
-      setTimeout(() => {
-        overlay.classList.add('fade-out');
-      }, 1500);
-    });
-
-    const specsData = [
-      { id: 1, category: 'pc', type: 'Processor', name: 'AMD Ryzen 9 3900X', desc: '12 Cores, 24 Threads, 4.6GHz Boost Clock. Perfect for heavy gaming and 1080p60 streaming simultaneously.', isPcSpec: true },
-      { id: 2, category: 'pc', type: 'Motherboard', name: 'Asus TUF Gaming B550M-Plus (Wi-Fi)', desc: 'Military-grade TUF components, PCIe 4.0 support, Wi-Fi 6, and robust VRM power delivery.', isPcSpec: true },
-      { id: 3, category: 'pc', type: 'RAM', name: 'CORSAIR VENGEANCE LPX 32GB (16x2)', desc: 'DDR4 high-speed memory for seamless multitasking, game rendering, and smooth live broadcasts.', isPcSpec: true },
-      { id: 4, category: 'pc', type: 'Graphics Card', name: 'MSI GeForce RTX 5070 Ti 16GB Gaming Trio OC', desc: '16GB VRAM, Next-gen Ray Tracing, DLSS 3.5, and Tri Frozr cooling performance.', isPcSpec: true },
-      { id: 5, category: 'peripherals', type: 'Monitor', name: 'Lenovo Legion 27" 27Q-11 IPS 1440P 300Hz', desc: 'Triple monitor setup (3x Monitors). 2K QHD IPS Display, Ultra-fast 300Hz Refresh Rate, 0.5ms Response Time.', isPcSpec: false },
-      { id: 6, category: 'pc', type: 'CPU Cooler', name: 'NZXT Kraken X63 280mm CPU Liquid Cooler', desc: '280mm AIO Liquid Cooler with Infinity Mirror RGB design and superior cooling efficiency.', isPcSpec: true },
-      { id: 7, category: 'pc', type: 'Power Supply', name: 'Corsair RMx RM850X CYBERNETICS 850W ATX v3.1', desc: '850W 80 PLUS Gold Certified, Fully Modular, Japanese 105°C Capacitors.', isPcSpec: true },
-      { id: 8, category: 'pc', type: 'Case', name: 'NZXT H710i Mid Tower White and Black', desc: 'Clean premium aesthetic, built-in RGB & Fan controller, optimized airflow cable management.', isPcSpec: true },
-      { id: 9, category: 'pc', type: 'Storage', name: 'ATATA XPG SX6000 Lite 512GB M.2 NVMe', desc: 'Ultra-fast NVMe M.2 SSD for lightning-quick OS boot times and game loading speeds.', isPcSpec: true },
-      { id: 10, category: 'peripherals', type: 'Keyboard', name: 'HyperX Alloy Origins RGB', desc: 'Full mechanical gaming keyboard with custom HyperX tactile switches and dynamic RGB lighting.', isPcSpec: false },
-      { id: 11, category: 'peripherals', type: 'Webcam', name: 'Razer Kiyo Pro', desc: 'Full HD 1080p 60FPS webcam with adaptive light sensor for crystal clear facecam streaming.', isPcSpec: false },
-      { id: 12, category: 'peripherals', type: 'Microphone', name: 'Razer Seiren V3 Mini', desc: 'Ultra-compact USB condenser microphone with studio-grade voice clarity and tap-to-mute sensor.', isPcSpec: false },
-      { id: 13, category: 'peripherals', type: 'Mouse', name: 'Razer Viper Mini', desc: 'Ultra-lightweight 61g ambidextrous design, optical mouse switches, and 8500 DPI optical sensor.', isPcSpec: false },
-      { id: 14, category: 'peripherals', type: 'Mouse Pad', name: 'Razer Gigantus V2', desc: 'Smart gaming mouse mat with textured micro-weave cloth surface for fluid tracking.', isPcSpec: false },
-      { id: 15, category: 'peripherals', type: 'Headset', name: 'Sony PlayStation Platinum Wireless', desc: 'Premium 7.1 Virtual Surround Sound, 50mm drivers, and noise-canceling dual microphones.', isPcSpec: false },
-      { id: 16, category: 'peripherals', type: 'Capture Card', name: 'Elgato HD60X', desc: '4K60 HDR10 Passthrough & 1080p60 capture card for seamless console streaming.', isPcSpec: false },
-      { id: 17, category: 'consoles', type: 'Steering Wheel', name: 'Logitech G923', desc: 'TRUEFORCE high-definition force feedback racing wheel with programmable dual-clutch launch control.', isPcSpec: false },
-      { id: 18, category: 'consoles', type: 'Console', name: 'PS5 Slim', desc: 'Sony PlayStation 5 Slim console featuring compact design, lightning-fast SSD, and immersive haptic feedback.', isPcSpec: false },
-      { id: 19, category: 'pc', type: 'Operating System', name: 'Windows 11 Pro 64-bit', desc: 'Advanced operating system optimized for high-end gaming, DirectX 12 Ultimate, and security features.', isPcSpec: true }
-    ];
-
-    let currentFilter = 'all';
-
-    function renderGrid(filter) {
-      currentFilter = filter;
-      const grid = document.getElementById('spec-grid');
-      grid.innerHTML = '';
-
-      const filtered = specsData.filter(item => {
-        if (filter === 'all') return true;
-        if (filter === 'pcspec') return item.isPcSpec === true;
-        return item.category === filter;
-      });
-
-      filtered.forEach(item => {
-        const card = document.createElement('div');
-        card.className = "glass glass-hover rounded-2xl p-5 cursor-pointer transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between";
-        card.onclick = () => openModal(item);
-        card.innerHTML = `
-          <div>
-            <span class="inline-block px-3 py-1 mb-2 text-xs font-semibold rounded-full bg-purple-600/30 text-purple-300 border border-purple-500/30">${item.type}</span>
-            <h3 class="font-display font-bold text-white text-base mb-1">${item.name}</h3>
-            <p class="text-xs text-gray-400 line-clamp-2">${item.desc}</p>
-          </div>
-          <div class="mt-4 flex items-center justify-between text-xs text-purple-400 font-semibold">
-            <span>View Specs</span>
-            <span>&rarr;</span>
-          </div>
-        `;
-        grid.appendChild(card);
-      });
-    }
-
-    function filterCategory(category, bannerImg, event) {
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      if (event && event.currentTarget) {
-        event.currentTarget.classList.add('active');
-      }
-
-      const banner = document.getElementById('setup-banner-img');
-      banner.style.opacity = '0';
-      setTimeout(() => {
-        banner.src = bannerImg;
-        banner.style.opacity = '1';
-      }, 200);
-
-      renderGrid(category);
-    }
-
-    function openModal(item) {
-      document.getElementById('modal-category').innerText = item.type;
-      document.getElementById('modal-title').innerText = item.name;
-      document.getElementById('modal-details').innerHTML = `
-        <p><strong>Description:</strong> ${item.desc}</p>
-        <p class="text-xs text-purple-300 mt-2">Status: Active in MAXRUCHIRA Battlestation Hub.</p>
-      `;
-      const modal = document.getElementById('specModal');
-      modal.classList.remove('hidden');
-      setTimeout(() => modal.classList.remove('opacity-0'), 10);
-    }
-
-    function closeModal() {
-      const modal = document.getElementById('specModal');
-      modal.classList.add('opacity-0');
-      setTimeout(() => modal.classList.add('hidden'), 250);
-    }
-
-    window.addEventListener('DOMContentLoaded', () => {
-      renderGrid('all');
-    });
-  </script>
 </body>
 </html>
