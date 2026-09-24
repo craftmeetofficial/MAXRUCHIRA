@@ -412,9 +412,9 @@
       <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
         <button onclick="filterCategory('all', '1.jpeg', event)" class="tab-btn active px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">All Items</button>
         <button onclick="filterCategory('pc', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Components</button>
-        <button onclick="filterCategory('peripherals', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Peripherals</button>
+        <button onclick="filterCategory('peripherals', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Peripherals &amp; Audio</button>
         <button onclick="filterCategory('consoles', '2.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Consoles &amp; Racing</button>
-        <button onclick="filterCategory('pcspec', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Spec</button>
+        <button onclick="filterCategory('pcspec', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">Software &amp; System</button>
       </div>
 
       <div id="spec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
@@ -566,91 +566,172 @@
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
         menuIcon.classList.remove('hidden');
-        closeIcon.classList.add('hidden');
+        closeIcon.classList.remove('hidden');
       });
     });
 
-    // SETUP SPEC DATA & INTERACTIVITY
+    // SETUP SPEC DATA & INTERACTIVITY (Updated with Real Specs)
     const specsData = [
       {
         id: 1,
         category: 'pc',
         catName: 'PC Components',
         title: 'Processor (CPU)',
-        desc: 'High performance processor for gaming & streaming.',
-        details: ['Model: Intel Core / AMD Ryzen High-End', 'Cooling: Liquid CPU Cooler', 'Optimized for multitasking and live encoding.'],
+        desc: 'AMD Ryzen 9 3900X 12-Core, 24-Thread High-Performance Processor.',
+        details: ['Cores/Threads: 12 Cores / 24 Threads', 'Base/Boost Clock: 3.8 GHz / 4.6 GHz', 'Ideal for heavy gaming, video editing, and multi-tasking streams.'],
         image: '1.jpeg'
       },
       {
         id: 2,
         category: 'pc',
         catName: 'PC Components',
-        title: 'Graphics Card (GPU)',
-        desc: 'Powerful GPU for high FPS gaming and ray tracing.',
-        details: ['High-end gaming graphics card', 'Supports DLSS / FSR and hardware encoding', 'Smooth 1080p / 1440p streaming output'],
+        title: 'Motherboard',
+        desc: 'Asus TUF Gaming B550M-Plus (Wi-Fi) Motherboard.',
+        details: ['Chipset: AMD B550 (Micro-ATX)', 'Connectivity: Built-in Intel Wi-Fi 6 & Realtek 2.5Gb Ethernet', 'Enhanced power solution and military-grade TUF components.'],
         image: '1.jpeg'
       },
       {
         id: 3,
         category: 'pc',
         catName: 'PC Components',
-        title: 'Memory & Storage (RAM / SSD)',
-        desc: 'Fast memory and NVMe SSD storage.',
-        details: ['RAM: 32GB High Speed RGB DDR4/DDR5', 'Storage: 1TB NVMe M.2 SSD + HDD storage', 'Zero lag during heavy game loading.'],
+        title: 'Memory (RAM)',
+        desc: 'CORSAIR VENGEANCE LPX 32GB (16GB x 2) DDR4 High-Speed RAM.',
+        details: ['Capacity: 32GB Kit (2 x 16GB)', 'Type: DDR4 High Performance', 'Designed for high-load gaming and seamless content creation.'],
         image: '1.jpeg'
       },
       {
         id: 4,
-        category: 'peripherals',
-        catName: 'Peripherals',
-        title: 'Gaming Monitor',
-        desc: 'High refresh rate display for competitive gaming.',
-        details: ['High refresh rate IPS Panel', 'Low response time', 'Crisp colors and wide viewing angles'],
+        category: 'pc',
+        catName: 'PC Components',
+        title: 'Graphics Card (GPU)',
+        desc: 'MSI GeForce RTX 5070 Ti 16GB Gaming Trio OC.',
+        details: ['VRAM: 16GB GDDR7 / GDDR6X High Speed', 'Cooling: Tri-Frozr Thermal Design with RGB', 'Delivers extreme ray tracing, DLSS support, and smooth high-FPS gameplay.'],
         image: '1.jpeg'
       },
       {
         id: 5,
-        category: 'peripherals',
-        catName: 'Peripherals',
-        title: 'Keyboard & Mouse',
-        desc: 'Mechanical keyboard and precision gaming mouse.',
-        details: ['RGB Mechanical Gaming Keyboard', 'Ergonomic high-DPI gaming mouse', 'Custom macro support'],
+        category: 'pc',
+        catName: 'PC Components',
+        title: 'CPU Liquid Cooler',
+        desc: 'NZXT Kraken X63 280mm All-in-One RGB Liquid Cooler.',
+        details: ['Radiator Size: 280mm with dual aer fans', 'Pump Design: Rotating infinity mirror RGB ring', 'Keeps the Ryzen 9 running at optimal low temperatures during long streams.'],
         image: '1.jpeg'
       },
       {
         id: 6,
-        category: 'peripherals',
-        catName: 'Peripherals',
-        title: 'Microphone & Audio',
-        desc: 'Studio quality mic for crystal clear voice chat & streams.',
-        details: ['Condenser Streaming Microphone', 'Boom arm and pop filter setup', 'Noise isolation enabled'],
-        image: '2.jpeg'
+        category: 'pc',
+        catName: 'PC Components',
+        title: 'Power Supply (PSU)',
+        desc: 'Corsair RMx RM850X CYBERNETICS 850W ATX v3.1.',
+        details: ['Rating: 80 PLUS Gold Certified & Cybernetics Certified', 'Capacity: 850 Watts Fully Modular', 'Reliable, ultra-low noise power delivery for high-end components.'],
+        image: '1.jpeg'
       },
       {
         id: 7,
-        category: 'consoles',
-        catName: 'Consoles & Racing',
-        title: 'PlayStation 5 Slim',
-        desc: 'Next-gen console for exclusive gameplay streams.',
-        details: ['PS5 Slim Console Edition', 'DualSense Wireless Controller', 'Elgato Capture Card Integration'],
-        image: '2.jpeg'
+        category: 'pc',
+        catName: 'PC Components',
+        title: 'Casing',
+        desc: 'NZXT H710i Mid Tower Casing (White and Black Edition).',
+        details: ['Type: Premium Mid-Tower ATX Case with Tempered Glass', 'Features: Integrated Smart Device v2 for RGB & fan control', 'Clean cable management system and stunning aesthetics.'],
+        image: '1.jpeg'
       },
       {
         id: 8,
-        category: 'consoles',
-        catName: 'Consoles & Racing',
-        title: 'Sim Racing Rig',
-        desc: 'Steering wheel and pedal set for racing simulators.',
-        details: ['Logitech G923 Racing Wheel & Pedals', 'Trueforce feedback technology', 'Mounted on custom cockpit rig'],
-        image: '3.jpeg'
+        category: 'pc',
+        catName: 'PC Components',
+        title: 'Storage (SSD)',
+        desc: 'ADATA XPG SX6000 Lite 512GB M.2 NVMe SSD.',
+        details: ['Speed: NVMe PCIe Gen3x4 Interface', 'Capacity: 512GB Fast Boot & Game Loading', 'Quick boot times for Windows and faster application response.'],
+        image: '1.jpeg'
       },
       {
         id: 9,
+        category: 'peripherals',
+        catName: 'Peripherals & Audio',
+        title: 'Gaming Monitor',
+        desc: 'Lenovo Legion 27" 27Q-11 IPS 1440P 300Hz Display.',
+        details: ['Resolution: QHD 1440p IPS Panel', 'Refresh Rate: Blazing fast 300Hz for competitive edge', 'Stunning clarity, vibrant colors, and ultra-smooth motion.'],
+        image: '1.jpeg'
+      },
+      {
+        id: 10,
+        category: 'peripherals',
+        catName: 'Peripherals & Audio',
+        title: 'Keyboard',
+        desc: 'HyperX Alloy Origins RGB Mechanical Gaming Keyboard.',
+        details: ['Switches: HyperX Mechanical Switches', 'Build: Full aircraft-grade aluminum body with dazzling RGB lighting', 'Precision feedback for rapid typing and gaming.'],
+        image: '1.jpeg'
+      },
+      {
+        id: 11,
+        category: 'peripherals',
+        catName: 'Peripherals & Audio',
+        title: 'Mouse & Mouse Pad',
+        desc: 'Razer Viper Mini & Razer Gigantus V2 Mouse Pad.',
+        details: ['Mouse: Lightweight ambidextrous gaming mouse with Optical Switches', 'Mouse Pad: Textured micro-weave cloth surface for smooth glide and control.'],
+        image: '1.jpeg'
+      },
+      {
+        id: 12,
+        category: 'peripherals',
+        catName: 'Peripherals & Audio',
+        title: 'Microphone',
+        desc: 'Razer Seiren V3 Mini Ultra-Compact USB Condenser Mic.',
+        details: ['Capsule: Custom condenser mic for crystal clear vocal pickup', 'Build: Sleek compact form factor with supercardioid pickup pattern to isolate voice.'],
+        image: '2.jpeg'
+      },
+      {
+        id: 13,
+        category: 'peripherals',
+        catName: 'Peripherals & Audio',
+        title: 'Webcam',
+        desc: 'Razer Kiyo Pro Streaming Webcam.',
+        details: ['Sensor: High-performance adaptive light sensor for uncompromised 1080p 60FPS fidelity', 'HDR-enabled for crisp facecam quality during streams.'],
+        image: '1.jpeg'
+      },
+      {
+        id: 14,
+        category: 'peripherals',
+        catName: 'Peripherals & Audio',
+        title: 'Headset',
+        desc: 'Sony PlayStation Platinum Wireless Headset.',
+        details: ['Audio: 3D Audio support & virtual surround sound', 'Connectivity: Wireless convenience tailored for immersive gaming & comms.'],
+        image: '2.jpeg'
+      },
+      {
+        id: 15,
+        category: 'consoles',
+        catName: 'Consoles & Racing',
+        title: 'Console',
+        desc: 'Sony PlayStation 5 Slim Console.',
+        details: ['Edition: PS5 Slim Compact Form Factor', 'Performance: Ultra-high speed SSD, ray tracing, and 4K gaming support.'],
+        image: '2.jpeg'
+      },
+      {
+        id: 16,
+        category: 'consoles',
+        catName: 'Consoles & Racing',
+        title: 'Capture Card',
+        desc: 'Elgato HD60X External Capture Card.',
+        details: ['Passthrough: 4K60 HDR10 zero-lag passthrough', 'Capture: 1080p60 recording and streaming for console gameplay.'],
+        image: '2.jpeg'
+      },
+      {
+        id: 17,
+        category: 'consoles',
+        catName: 'Consoles & Racing',
+        title: 'Steering Wheel Rig',
+        desc: 'Logitech G923 Racing Wheel & Pedals with TRUEFORCE.',
+        details: ['Feedback: High-definition force feedback technology connecting directly to game engines', 'Build: Brushed metal wheel, hand-stitched leather cover, and responsive pedals.'],
+        image: '3.jpeg'
+      },
+      {
+        id: 18,
         category: 'pcspec',
-        catName: 'PC Spec',
-        title: 'Full Rig Overview',
-        desc: 'Complete system architecture summary.',
-        details: ['Custom RGB Glass Casing', 'Modular Power Supply (80+ Gold)', 'Advanced cooling fan configuration'],
+        catName: 'Software & System',
+        title: 'Operating System',
+        desc: 'Microsoft Windows 11 Pro 64-bit.',
+        details: ['Edition: Windows 11 Pro Professional', 'Optimized for high-end gaming, DirectX 12 Ultimate, and advanced resource management.'],
         image: '1.jpeg'
       }
     ];
