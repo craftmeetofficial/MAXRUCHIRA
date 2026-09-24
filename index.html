@@ -52,31 +52,27 @@
       position: relative;
     }
 
-    /* BACKGROUND IMAGE STYLES - mr45.png */
+    /* BACKGROUND IMAGE STYLES USING CSS FOR mr45.png */
     .bg-video-container {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      overflow: hidden;
       z-index: -1;
       pointer-events: none;
+      background-image: url('mr45.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: contrast(110%) brightness(90%) saturate(110%);
     }
 
-    .bg-video-container img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: blur(2px) contrast(110%) brightness(85%) saturate(110%);
-      transform: scale(1.03);
-    }
-
-    /* Soft overlay so text remains readable while image is clearly visible */
+    /* Soft overlay to blend nicely */
     .bg-video-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(4, 1, 8, 0.35);
+      background: rgba(4, 1, 8, 0.25);
       z-index: 1;
     }
 
@@ -195,7 +191,6 @@
   <!-- BACKGROUND IMAGE CONTAINER (mr45.png) -->
   <div class="bg-video-container">
     <div class="bg-video-overlay"></div>
-    <img src="mr45.png" alt="Background" onerror="this.src='https://via.placeholder.com/1920x1080/040108/a855f7?text=Background';">
   </div>
 
   <!-- INTRO ASSEMBLY OVERLAY -->
