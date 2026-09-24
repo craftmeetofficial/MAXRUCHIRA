@@ -525,29 +525,29 @@
         <p class="text-xs sm:text-sm font-semibold tracking-wider text-purple-300 uppercase mb-1">
           Developed by <span class="neon-text font-bold">Kavee Creations</span>
         </p>
-        <a href="mailto:kaveeshasehara7@gmail.com" class="text-xs sm:text-sm text-gray-300 hover:text-cyan-300 transition break-all underline decoration-purple-500/50 hover:decoration-cyan-400">
+        <a href="mailto:kaveeshasehara7@gmail.com" class="text-xs sm:text-sm text-gray-300 hover:text-cyan-300 transition break-all underline decoration-purple-500/50">
           kaveeshasehara7@gmail.com
         </a>
       </div>
 
-      <p class="text-xs text-gray-400">© 2026 MAXRUCHIRA. All rights reserved.</p>
+      <p class="text-xs text-gray-300">&copy; 2026 MAXRUCHIRA. All rights reserved.</p>
     </div>
   </footer>
 
   <script>
-    // INTRO ANIMATION HANDLER
-    window.addEventListener('load', () => {
+    // INTRO ASSEMBLY ANIMATION
+    window.addEventListener('DOMContentLoaded', () => {
       const overlay = document.getElementById('assembly-overlay');
       const progressBar = document.getElementById('assembly-progress');
       
       setTimeout(() => {
+        progressBar.style.width = '100%';
         overlay.classList.add('assembled');
-        if(progressBar) progressBar.style.width = '100%';
-      }, 100);
+      }, 200);
 
       setTimeout(() => {
         overlay.classList.add('fade-out');
-      }, 1200);
+      }, 1600);
     });
 
     // MOBILE MENU TOGGLE
@@ -566,174 +566,31 @@
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
         menuIcon.classList.remove('hidden');
-        closeIcon.classList.remove('hidden');
+        closeIcon.classList.add('hidden');
       });
     });
 
-    // SETUP SPEC DATA & INTERACTIVITY (Updated with Real Specs)
-    const specsData = [
-      {
-        id: 1,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'Processor (CPU)',
-        desc: 'AMD Ryzen 9 3900X 12-Core, 24-Thread High-Performance Processor.',
-        details: ['Cores/Threads: 12 Cores / 24 Threads', 'Base/Boost Clock: 3.8 GHz / 4.6 GHz', 'Ideal for heavy gaming, video editing, and multi-tasking streams.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 2,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'Motherboard',
-        desc: 'Asus TUF Gaming B550M-Plus (Wi-Fi) Motherboard.',
-        details: ['Chipset: AMD B550 (Micro-ATX)', 'Connectivity: Built-in Intel Wi-Fi 6 & Realtek 2.5Gb Ethernet', 'Enhanced power solution and military-grade TUF components.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 3,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'Memory (RAM)',
-        desc: 'CORSAIR VENGEANCE LPX 32GB (16GB x 2) DDR4 High-Speed RAM.',
-        details: ['Capacity: 32GB Kit (2 x 16GB)', 'Type: DDR4 High Performance', 'Designed for high-load gaming and seamless content creation.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 4,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'Graphics Card (GPU)',
-        desc: 'MSI GeForce RTX 5070 Ti 16GB Gaming Trio OC.',
-        details: ['VRAM: 16GB GDDR7 / GDDR6X High Speed', 'Cooling: Tri-Frozr Thermal Design with RGB', 'Delivers extreme ray tracing, DLSS support, and smooth high-FPS gameplay.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 5,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'CPU Liquid Cooler',
-        desc: 'NZXT Kraken X63 280mm All-in-One RGB Liquid Cooler.',
-        details: ['Radiator Size: 280mm with dual aer fans', 'Pump Design: Rotating infinity mirror RGB ring', 'Keeps the Ryzen 9 running at optimal low temperatures during long streams.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 6,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'Power Supply (PSU)',
-        desc: 'Corsair RMx RM850X CYBERNETICS 850W ATX v3.1.',
-        details: ['Rating: 80 PLUS Gold Certified & Cybernetics Certified', 'Capacity: 850 Watts Fully Modular', 'Reliable, ultra-low noise power delivery for high-end components.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 7,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'Casing',
-        desc: 'NZXT H710i Mid Tower Casing (White and Black Edition).',
-        details: ['Type: Premium Mid-Tower ATX Case with Tempered Glass', 'Features: Integrated Smart Device v2 for RGB & fan control', 'Clean cable management system and stunning aesthetics.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 8,
-        category: 'pc',
-        catName: 'PC Components',
-        title: 'Storage (SSD)',
-        desc: 'ADATA XPG SX6000 Lite 512GB M.2 NVMe SSD.',
-        details: ['Speed: NVMe PCIe Gen3x4 Interface', 'Capacity: 512GB Fast Boot & Game Loading', 'Quick boot times for Windows and faster application response.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 9,
-        category: 'peripherals',
-        catName: 'Peripherals & Audio',
-        title: 'Gaming Monitor',
-        desc: 'Lenovo Legion 27" 27Q-11 IPS 1440P 300Hz Display.',
-        details: ['Resolution: QHD 1440p IPS Panel', 'Refresh Rate: Blazing fast 300Hz for competitive edge', 'Stunning clarity, vibrant colors, and ultra-smooth motion.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 10,
-        category: 'peripherals',
-        catName: 'Peripherals & Audio',
-        title: 'Keyboard',
-        desc: 'HyperX Alloy Origins RGB Mechanical Gaming Keyboard.',
-        details: ['Switches: HyperX Mechanical Switches', 'Build: Full aircraft-grade aluminum body with dazzling RGB lighting', 'Precision feedback for rapid typing and gaming.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 11,
-        category: 'peripherals',
-        catName: 'Peripherals & Audio',
-        title: 'Mouse & Mouse Pad',
-        desc: 'Razer Viper Mini & Razer Gigantus V2 Mouse Pad.',
-        details: ['Mouse: Lightweight ambidextrous gaming mouse with Optical Switches', 'Mouse Pad: Textured micro-weave cloth surface for smooth glide and control.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 12,
-        category: 'peripherals',
-        catName: 'Peripherals & Audio',
-        title: 'Microphone',
-        desc: 'Razer Seiren V3 Mini Ultra-Compact USB Condenser Mic.',
-        details: ['Capsule: Custom condenser mic for crystal clear vocal pickup', 'Build: Sleek compact form factor with supercardioid pickup pattern to isolate voice.'],
-        image: '2.jpeg'
-      },
-      {
-        id: 13,
-        category: 'peripherals',
-        catName: 'Peripherals & Audio',
-        title: 'Webcam',
-        desc: 'Razer Kiyo Pro Streaming Webcam.',
-        details: ['Sensor: High-performance adaptive light sensor for uncompromised 1080p 60FPS fidelity', 'HDR-enabled for crisp facecam quality during streams.'],
-        image: '1.jpeg'
-      },
-      {
-        id: 14,
-        category: 'peripherals',
-        catName: 'Peripherals & Audio',
-        title: 'Headset',
-        desc: 'Sony PlayStation Platinum Wireless Headset.',
-        details: ['Audio: 3D Audio support & virtual surround sound', 'Connectivity: Wireless convenience tailored for immersive gaming & comms.'],
-        image: '2.jpeg'
-      },
-      {
-        id: 15,
-        category: 'consoles',
-        catName: 'Consoles & Racing',
-        title: 'Console',
-        desc: 'Sony PlayStation 5 Slim Console.',
-        details: ['Edition: PS5 Slim Compact Form Factor', 'Performance: Ultra-high speed SSD, ray tracing, and 4K gaming support.'],
-        image: '2.jpeg'
-      },
-      {
-        id: 16,
-        category: 'consoles',
-        catName: 'Consoles & Racing',
-        title: 'Capture Card',
-        desc: 'Elgato HD60X External Capture Card.',
-        details: ['Passthrough: 4K60 HDR10 zero-lag passthrough', 'Capture: 1080p60 recording and streaming for console gameplay.'],
-        image: '2.jpeg'
-      },
-      {
-        id: 17,
-        category: 'consoles',
-        catName: 'Consoles & Racing',
-        title: 'Steering Wheel Rig',
-        desc: 'Logitech G923 Racing Wheel & Pedals with TRUEFORCE.',
-        details: ['Feedback: High-definition force feedback technology connecting directly to game engines', 'Build: Brushed metal wheel, hand-stitched leather cover, and responsive pedals.'],
-        image: '3.jpeg'
-      },
-      {
-        id: 18,
-        category: 'pcspec',
-        catName: 'Software & System',
-        title: 'Operating System',
-        desc: 'Microsoft Windows 11 Pro 64-bit.',
-        details: ['Edition: Windows 11 Pro Professional', 'Optimized for high-end gaming, DirectX 12 Ultimate, and advanced resource management.'],
-        image: '1.jpeg'
+    // HEADER SCROLL EFFECT
+    window.addEventListener('scroll', () => {
+      const header = document.getElementById('header');
+      if (window.scrollY > 50) {
+        header.classList.add('py-1');
+      } else {
+        header.classList.remove('py-1');
       }
+    });
+
+    // SPEC DATA
+    const specsData = [
+      { id: 1, category: 'pc', name: 'Processor (CPU)', summary: 'High performance gaming & streaming processor', details: ['Model: Intel Core i7 / AMD Ryzen', 'Cores/Threads: Optimized for Multitasking', 'Cooling: Liquid Cooling System'] },
+      { id: 2, category: 'pc', name: 'Graphics Card (GPU)', summary: 'Ultra settings gaming & hardware encoding', details: ['Model: NVIDIA GeForce RTX Series', 'VRAM: High-speed GDDR6', 'Ray Tracing & DLSS Enabled'] },
+      { id: 3, category: 'pc', name: 'Memory (RAM)', summary: 'High-speed multi-channel memory kit', details: ['Capacity: 32GB / 64GB DDR4/DDR5', 'Speed: 3600MHz+ with RGB lighting'] },
+      { id: 4, category: 'pc', name: 'Storage (SSD)', summary: 'Lightning fast NVMe M.2 drives', details: ['Type: NVMe PCIe Gen4 M.2 SSD', 'Capacity: 1TB / 2TB fast boot & game loading'] },
+      { id: 5, category: 'peripherals', name: 'Microphone & Audio', summary: 'Studio-grade broadcast microphone', details: ['Model: Professional Condenser / Dynamic Mic', 'Interface: XLR / USB Audio Interface', 'Noise Isolation & Boom Arm'] },
+      { id: 6, category: 'peripherals', name: 'Gaming Keyboard & Mouse', summary: 'Precision mechanical setup', details: ['Switches: Mechanical RGB Switches', 'Mouse: High DPI Ergonomic Gaming Mouse'] },
+      { id: 7, category: 'consoles', name: 'PlayStation 5 Slim', summary: 'Next-gen console gaming & exclusives', details: ['Edition: PS5 Slim Disc Version', 'Resolution: 4K Gaming up to 120Hz', 'Custom DualSense Controllers'] },
+      { id: 8, category: 'consoles', name: 'Sim Racing Rig', summary: 'Immersive driving simulation cockpit', details: ['Wheel & Pedals: Logitech G923 Racing Wheel', 'Force Feedback: TrueForce Technology'] },
+      { id: 9, category: 'pcspec', name: 'OBS Studio & Streaming', summary: 'Professional broadcasting software', details: ['Setup: Multi-scene setup with custom overlays', 'Encoder: NVIDIA NVENC Hardware Encoding'] }
     ];
 
     function renderSpecs(category = 'all') {
@@ -742,21 +599,17 @@
 
       const filtered = category === 'all' ? specsData : specsData.filter(item => item.category === category);
 
-      filtered.forEach(item => {
+      filtered.forEach(spec => {
         const card = document.createElement('div');
-        card.className = 'glass glass-hover rounded-2xl p-5 border border-purple-500/30 cursor-pointer transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between';
-        card.onclick = () => openModal(item);
-
+        card.className = 'glass glass-hover rounded-2xl p-5 cursor-pointer transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between';
+        card.onclick = () => openModal(spec);
         card.innerHTML = `
           <div>
-            <div class="flex items-center justify-between mb-3">
-              <span class="text-[10px] font-semibold uppercase px-2.5 py-1 rounded-full bg-purple-600/30 text-purple-300 border border-purple-400/30">${item.catName}</span>
-              <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <h3 class="font-display font-bold text-lg text-white mb-2">${item.title}</h3>
-            <p class="text-xs text-gray-300 line-clamp-2">${item.desc}</p>
+            <span class="text-[10px] font-semibold text-purple-400 uppercase tracking-widest bg-purple-950/50 px-2.5 py-1 rounded-md border border-purple-500/20">${spec.category.toUpperCase()}</span>
+            <h3 class="font-display font-bold text-lg text-white mt-3 mb-1">${spec.name}</h3>
+            <p class="text-xs text-gray-300">${spec.summary}</p>
           </div>
-          <div class="mt-4 pt-3 border-t border-purple-500/20 flex items-center justify-between text-xs text-purple-300 font-medium">
+          <div class="mt-4 flex items-center justify-between text-xs text-purple-300 font-semibold pt-3 border-t border-purple-500/20">
             <span>View Specs</span>
             <span>&rarr;</span>
           </div>
@@ -767,57 +620,44 @@
 
     function filterCategory(category, bannerImg, event) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      if(event && event.currentTarget) {
-        event.currentTarget.classList.add('active');
-      }
+      event.target.classList.add('active');
 
       const banner = document.getElementById('setup-banner-img');
-      if(banner) {
-        banner.style.opacity = '0';
-        banner.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-          banner.src = bannerImg;
-          banner.style.opacity = '1';
-          banner.style.transform = 'scale(1)';
-        }, 300);
-      }
+      banner.style.opacity = '0';
+      setTimeout(() => {
+        banner.src = bannerImg;
+        banner.style.opacity = '1';
+      }, 200);
 
       renderSpecs(category);
     }
 
-    function openModal(item) {
-      const modal = document.getElementById('specModal');
-      document.getElementById('modal-category').innerText = item.catName;
-      document.getElementById('modal-title').innerText = item.title;
+    function openModal(spec) {
+      document.getElementById('modal-category').innerText = spec.category.toUpperCase();
+      document.getElementById('modal-title').innerText = spec.name;
       
       const detailsContainer = document.getElementById('modal-details');
       detailsContainer.innerHTML = '';
-      
-      item.details.forEach(detail => {
+      spec.details.forEach(detail => {
         const p = document.createElement('p');
-        p.className = 'flex items-center gap-2';
-        p.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> <span>${detail}</span>`;
+        p.className = 'flex items-center gap-2 text-gray-200';
+        p.innerHTML = `<span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span> ${detail}`;
         detailsContainer.appendChild(p);
       });
 
+      const modal = document.getElementById('specModal');
       modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-      }, 10);
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
     }
 
     function closeModal() {
       const modal = document.getElementById('specModal');
       modal.classList.add('opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-      }, 300);
+      setTimeout(() => modal.classList.add('hidden'), 300);
     }
 
-    // Initialize spec grid on load
-    document.addEventListener('DOMContentLoaded', () => {
-      renderSpecs('all');
-    });
+    // Initial load
+    renderSpecs('all');
   </script>
 </body>
 </html>
