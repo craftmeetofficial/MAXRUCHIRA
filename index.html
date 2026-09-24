@@ -29,10 +29,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <!-- External Separated CSS File -->
-  <link rel="stylesheet" href="style.css?v=2">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body class="font-body text-gray-200 antialiased selection:bg-purple-500 selection:text-white">
+
+  <!-- EPIC INTRO LOADING SCREEN -->
+  <div id="intro-loader">
+    <div class="loader-logo-box text-center">
+      <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-2 border-purple-500 flex items-center justify-center shadow-lg shadow-purple-500/50">
+        <img src="logo.jpg" alt="Logo" class="w-full h-full object-cover">
+      </div>
+      <h2 class="font-display font-bold text-2xl tracking-widest text-white italic neon-text">MAXRUCHIRA</h2>
+      <p class="text-xs text-purple-300 tracking-widest mt-1 uppercase">ASSEMBLING PORTAL...</p>
+      <div class="loader-bar-track mx-auto">
+        <div id="loader-bar-fill" class="loader-bar-fill"></div>
+      </div>
+    </div>
+  </div>
 
   <!-- BACKGROUND FIXED IMAGE -->
   <div class="bg-video-container">
@@ -40,7 +53,7 @@
   </div>
 
   <!-- HEADER -->
-  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-top">
+  <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 animate-back">
     <div class="glass border-b border-purple-500/20">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-16 md:h-20">
@@ -90,32 +103,32 @@
     </div>
   </header>
 
-  <!-- HERO SECTION WITH SLIDE-IN ANIMATIONS -->
+  <!-- HERO SECTION WITH FRONT & BACK ASSEMBLE ANIMATIONS -->
   <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
     <div class="relative z-10 max-w-5xl mx-auto text-center w-full">
       
-      <!-- Badge comes from Left -->
-      <div class="animate-left">
+      <!-- Badge drops from Front (Zoom in) -->
+      <div class="animate-front">
         <p class="inline-block px-4 py-1.5 mb-6 text-xs sm:text-sm font-semibold tracking-widest uppercase text-purple-300 border border-purple-500/40 rounded-full glass">
           OFFICIAL STREAM PORTAL &amp; GAMING HUB
         </p>
       </div>
 
-      <!-- Heading comes from Right -->
-      <div class="animate-right">
+      <!-- Main Title pushes from Back (Zoom out to fit) -->
+      <div class="animate-back">
         <h1 class="font-display font-bold text-5xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider italic neon-text mb-4">
           MAXRUCHIRA
         </h1>
       </div>
 
-      <!-- Subtitle comes from Top -->
-      <div class="animate-top">
+      <!-- Subtitle slides from Top -->
+      <div class="animate-back">
         <p class="font-display font-bold text-xs sm:text-sm md:text-base neon-outline-text mb-10 px-2 leading-relaxed">
           SRI LANKAN GAMING YOUTUBER / STREAMER / VLOGGER
         </p>
       </div>
 
-      <!-- Subscriber Boxes come from Left -->
+      <!-- Subscriber Boxes slide from Left -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-10 w-full animate-left">
         <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
            class="glass glass-hover rounded-2xl p-5 sm:px-6 sm:py-4 w-full sm:w-64 transition-all">
@@ -138,7 +151,7 @@
         </a>
       </div>
 
-      <!-- Action Buttons come from Right -->
+      <!-- Action Buttons slide from Right -->
       <div class="flex flex-col sm:flex-row items-center justify-center gap-4 w-full animate-right">
         <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" rel="noopener"
            class="inline-flex items-center justify-center gap-3 px-8 py-4 w-full sm:w-auto rounded-xl bg-gradient-to-r from-red-600 to-red-500 text-white font-bold text-base sm:text-lg transition-all">
@@ -365,6 +378,25 @@
   </footer>
 
   <script>
+    // Intro Loader Progress Simulation & Removal
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('intro-loader');
+      const barFill = document.getElementById('loader-bar-fill');
+      let progress = 0;
+
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 20) + 10;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          setTimeout(() => {
+            loader.classList.add('fade-out');
+          }, 300);
+        }
+        barFill.style.width = progress + '%';
+      }, 100);
+    });
+
     // Lazy Load Iframes
     document.addEventListener("DOMContentLoaded", function() {
       const observer = new IntersectionObserver((entries, observer) => {
@@ -430,7 +462,7 @@
       const grid = document.getElementById('spec-grid');
       grid.innerHTML = '';
 
-      const filtered = category === 'all' ? specsData : specsData.get ? specsData : specsData.filter(item => item.category === category);
+      const filtered = category === 'all' ? specsData : specsData.filter(item => item.category === category);
 
       filtered.forEach(item => {
         const card = document.createElement('div');
