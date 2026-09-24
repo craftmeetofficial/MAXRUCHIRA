@@ -1,0 +1,143 @@
+/* --- Base Styles & Optimizations --- */
+body {
+  background-color: #040108;
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.bg-video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background-image: url('mr45.PNG');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-video-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 1, 8, 0.85);
+  z-index: 1;
+}
+
+/* --- Intro Assembly Animation --- */
+#assembly-overlay {
+  position: fixed;
+  inset: 0;
+  background: #040108;
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease, visibility 0.4s;
+}
+
+.assemble-part {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s ease;
+}
+
+#assembly-overlay.assembled .assemble-part {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#assembly-overlay.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* --- Glassmorphism (Mobile Optimized) --- */
+.glass {
+  background: rgba(15, 10, 30, 0.9);
+  border: 1px solid rgba(168, 85, 247, 0.3);
+}
+@media (min-width: 768px) {
+  .glass {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+}
+
+.glass-hover:hover {
+  border-color: rgba(168, 85, 247, 0.7);
+}
+
+.neon-text {
+  background: linear-gradient(135deg, #e879f9, #a855f7, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.neon-outline-text {
+  color: #ffffff;
+  letter-spacing: 0.1em;
+}
+
+.neon-border {
+  border: 1px solid rgba(168, 85, 247, 0.4);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(139, 92, 246, 0.4));
+  border-color: #a855f7;
+  color: #fff;
+}
+
+.modal-box {
+  transform: scale(0.95);
+  opacity: 0;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+#specModal:not(.hidden) .modal-box {
+  transform: scale(1);
+  opacity: 1;
+}
+
+#setup-banner-img {
+  transition: opacity 0.2s ease-in-out;
+}
+
+/* --- Entrance Slide-In Animations (Eka Pathin Enna) --- */
+@keyframes slideFromLeft {
+  0% { opacity: 0; transform: translateX(-50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromRight {
+  0% { opacity: 0; transform: translateX(50px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideFromTop {
+  0% { opacity: 0; transform: translateY(-40px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate-left {
+  animation: slideFromLeft 0.8s ease-out forwards;
+}
+
+.animate-right {
+  animation: slideFromRight 0.8s ease-out forwards;
+}
+
+.animate-top {
+  animation: slideFromTop 0.8s ease-out forwards;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0612; }
+::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 3px; }
