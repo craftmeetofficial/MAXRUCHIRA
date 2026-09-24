@@ -19,7 +19,7 @@
             }
           },
           fontFamily: {
-            display: ['Orbitron', 'system-ui', 'sans-serif'],
+            display: ['Rajdhani', 'system-ui', 'sans-serif'],
             body: ['Inter', 'system-ui', 'sans-serif']
           },
           boxShadow: {
@@ -43,7 +43,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     body {
       background-color: #040108;
@@ -128,7 +128,7 @@
             <div class="w-10 h-10 rounded-full overflow-hidden border-2 border-purple-500 shadow-neon group-hover:shadow-neon-lg transition-shadow flex items-center justify-center">
               <img src="logo.jpg" alt="MAXRUCHIRA Logo" class="w-full h-full object-cover">
             </div>
-            <span class="font-display font-bold text-lg tracking-wider neon-text hidden sm:block">MAXRUCHIRA</span>
+            <span class="font-display font-bold text-xl tracking-widest italic neon-text hidden sm:block">MAXRUCHIRA</span>
           </a>
 
           <nav class="hidden md:flex items-center gap-8">
@@ -180,7 +180,7 @@
         OFFICIAL STREAM PORTAL &amp; GAMING HUB
       </p>
 
-      <h1 class="font-display font-extrabold text-5xl sm:text-6xl md:text-7xl lg:text-8xl tracking-tight neon-text mb-4 animate-float">
+      <h1 class="font-display font-bold text-6xl sm:text-7xl md:text-8xl lg:text-9xl tracking-wider italic neon-text mb-4 animate-float">
         MAXRUCHIRA
       </h1>
 
@@ -309,7 +309,7 @@
         <img id="setup-banner-img" src="1.jpeg" alt="MAXRUCHIRA Gaming Setup" class="w-full h-auto max-h-[500px] object-cover rounded-2xl" onerror="this.src='https://via.placeholder.com/1200x600/100820/a855f7?text=MAXRUCHIRA+GAMING+SETUP';">
       </div>
 
-      <!-- FILTER TABS (Added 'PC Spec' category) -->
+      <!-- FILTER TABS -->
       <div class="flex flex-wrap items-center justify-center gap-3 mb-10">
         <button onclick="filterCategory('all', '1.jpeg', event)" class="tab-btn active px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">All Items</button>
         <button onclick="filterCategory('pc', '1.jpeg', event)" class="tab-btn px-5 py-2.5 rounded-xl border border-purple-500/30 text-sm font-semibold transition-all">PC Components</button>
@@ -414,7 +414,7 @@
         <div class="w-8 h-8 rounded-full overflow-hidden border border-purple-500 flex items-center justify-center">
           <img src="logo.jpg" alt="Logo" class="w-full h-full object-cover">
         </div>
-        <span class="font-display font-bold text-lg text-white">MAXRUCHIRA</span>
+        <span class="font-display font-bold text-lg italic text-white">MAXRUCHIRA</span>
       </div>
       <p class="text-sm text-gray-400 mb-6 max-w-md">Sri Lankan Content Creator, Streamer, and Gaming Enthusiast.</p>
       <div class="flex items-center gap-6 mb-8 text-gray-400">
@@ -435,7 +435,6 @@
 
   <!-- JAVASCRIPT & SPEC DATA -->
   <script>
-    // Updated Specs Data with all requested items & categories (pc, peripherals, consoles, pcspec)
     const specsData = [
       { id: 1, category: 'pc', type: 'Processor', name: 'AMD Ryzen 9 3900X', desc: '12 Cores, 24 Threads, 4.6GHz Boost Clock. Perfect for heavy gaming and 1080p60 streaming simultaneously.', isPcSpec: true },
       { id: 2, category: 'pc', type: 'Motherboard', name: 'Asus TUF Gaming B550M-Plus (Wi-Fi)', desc: 'Military-grade TUF components, PCIe 4.0 support, Wi-Fi 6, and robust VRM power delivery.', isPcSpec: true },
@@ -496,7 +495,6 @@
         event.currentTarget.classList.add('active');
       }
 
-      // Change setup banner image smoothly
       const banner = document.getElementById('setup-banner-img');
       banner.style.opacity = '0';
       setTimeout(() => {
@@ -525,7 +523,6 @@
       setTimeout(() => modal.classList.add('hidden'), 250);
     }
 
-    // Initial render
     window.addEventListener('DOMContentLoaded', () => {
       renderGrid('all');
     });
