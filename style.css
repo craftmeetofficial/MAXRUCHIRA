@@ -65,7 +65,7 @@ body {
   color: #fff;
 }
 
-/* --- Epic Intro Loading Screen Overlay --- */
+/* --- Kerakila Patthaka Indan Enna Loading Screen Animation --- */
 #intro-loader {
   position: fixed;
   inset: 0;
@@ -85,12 +85,18 @@ body {
 }
 
 .loader-logo-box {
-  animation: logoPulse 1.5s infinite alternate;
+  animation: spinInFromSide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
-@keyframes logoPulse {
-  0% { transform: scale(1); filter: drop-shadow(0 0 10px rgba(168,85,247,0.4)); }
-  100% { transform: scale(1.08); filter: drop-shadow(0 0 25px rgba(168,85,247,0.8)); }
+@keyframes spinInFromSide {
+  0% { 
+    opacity: 0; 
+    transform: rotate(-360deg) scale(0.2) translateX(-200px); 
+  }
+  100% { 
+    opacity: 1; 
+    transform: rotate(0deg) scale(1) translateX(0); 
+  }
 }
 
 .loader-bar-track {
@@ -110,42 +116,21 @@ body {
 }
 
 
-/* --- Front, Back & Side Assembly Animations --- */
-@keyframes dropFromFront {
-  0% { opacity: 0; transform: perspective(1000px) translateZ(300px) scale(0.8); }
-  100% { opacity: 1; transform: perspective(1000px) translateZ(0) scale(1); }
+/* --- Diy Allak Wage Uda Indan Pahalata Wetena (Waterfall Cascading) Animations --- */
+@keyframes waterfallDrop {
+  0% {
+    opacity: 0;
+    transform: translateY(-120px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
-@keyframes pushFromBack {
-  0% { opacity: 0; transform: perspective(1000px) translateZ(-300px) scale(1.2); }
-  100% { opacity: 1; transform: perspective(1000px) translateZ(0) scale(1); }
-}
-
-@keyframes slideFromLeft {
-  0% { opacity: 0; transform: translateX(-100px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slideFromRight {
-  0% { opacity: 0; transform: translateX(100px); }
-  100% { opacity: 1; transform: translateX(0); }
-}
-
-/* Classes to apply */
-.animate-front {
-  animation: dropFromFront 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-back {
-  animation: pushFromBack 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-left {
-  animation: slideFromLeft 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-.animate-right {
-  animation: slideFromRight 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+.animate-waterfall {
+  animation: waterfallDrop 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  opacity: 0; /* loading eka iwara wenakal hide wila thiyenna */
 }
 
 /* Scrollbar Customization */
