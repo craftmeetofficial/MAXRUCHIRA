@@ -5,7 +5,6 @@ body {
   overflow-x: hidden;
   position: relative;
 }
-
 .bg-video-container {
   position: fixed;
   top: 0;
@@ -19,18 +18,18 @@ body {
   background-position: center;
   background-repeat: no-repeat;
 }
-
 .bg-video-overlay {
   position: absolute;
   inset: 0;
   background: rgba(4, 1, 8, 0.85);
   z-index: 1;
 }
-
 /* --- Glassmorphism --- */
 .glass {
   background: rgba(15, 10, 30, 0.9);
   border: 1px solid rgba(168, 85, 247, 0.3);
+  position: relative;
+  overflow: hidden;
 }
 @media (min-width: 768px) {
   .glass {
@@ -38,33 +37,27 @@ body {
     -webkit-backdrop-filter: blur(12px);
   }
 }
-
 .glass-hover:hover {
   border-color: rgba(168, 85, 247, 0.7);
 }
-
 .neon-text {
   background: linear-gradient(135deg, #e879f9, #a855f7, #6366f1);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
-
 .neon-outline-text {
   color: #ffffff;
   letter-spacing: 0.1em;
 }
-
 .neon-border {
   border: 1px solid rgba(168, 85, 247, 0.4);
 }
-
 .tab-btn.active {
   background: linear-gradient(135deg, rgba(168, 85, 247, 0.5), rgba(139, 92, 246, 0.4));
   border-color: #a855f7;
   color: #fff;
 }
-
 /* --- Kerakila Patthaka Indan Enna Loading Screen Animation --- */
 #intro-loader {
   position: fixed;
@@ -77,17 +70,14 @@ body {
   justify-content: center;
   transition: opacity 0.8s ease, visibility 0.8s ease;
 }
-
 #intro-loader.fade-out {
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
 }
-
 .loader-logo-box {
   animation: spinInFromSide 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
-
 @keyframes spinInFromSide {
   0% { 
     opacity: 0; 
@@ -98,7 +88,6 @@ body {
     transform: rotate(0deg) scale(1) translateX(0); 
   }
 }
-
 .loader-bar-track {
   width: 220px;
   height: 4px;
@@ -107,15 +96,12 @@ body {
   overflow: hidden;
   margin-top: 20px;
 }
-
 .loader-bar-fill {
   width: 0%;
   height: 100%;
   background: linear-gradient(90deg, #a855f7, #ec4899);
   transition: width 0.2s ease;
 }
-
-
 /* --- Keli Kaeli Wage Uda Indan Wetena (Pieces Drop & Bounce) Animation --- */
 @keyframes pieceDrop {
   0% {
@@ -134,13 +120,90 @@ body {
     transform: translateY(0) rotate(0deg) scale(1);
   }
 }
-
 .animate-piece-drop {
   animation: pieceDrop 1.1s cubic-bezier(0.25, 1, 0.5, 1) forwards;
   opacity: 0;
 }
-
 /* Scrollbar Customization */
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0a0612; }
 ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 3px; }
+
+
+/* ============================================================
+   FRONT FLOWING EFFECT
+   Subtle glowing moving gradient border + soft shimmer
+   Uses proper mask-composite technique
+   ============================================================ */
+
+/* Moving gradient border ring */
+.glass::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;                          /* border thickness */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 20%,
+    rgba(168, 85, 247, 0.25) 35%,
+    rgba(236, 72, 153, 0.55) 50%,
+    rgba(168, 85, 247, 0.25) 65%,
+    transparent 80%,
+    transparent 100%
+  );
+  background-size: 300% 100%;
+  animation: frontFlow 5.5s linear infinite;
+
+  /* Mask Composite Technique */
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes frontFlow {
+  0%   { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* Soft inner shimmer overlay */
+.glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    transparent 40%,
+    rgba(168, 85, 247, 0.04) 48%,
+    rgba(236, 72, 153, 0.08) 50%,
+    rgba(168, 85, 247, 0.04) 52%,
+    transparent 60%,
+    transparent 100%
+  );
+  background-size: 250% 100%;
+  animation: softShimmer 7s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+@keyframes softShimmer {
+  0%   { background-position: 150% 0; }
+  100% { background-position: -150% 0; }
+}
+
+/* Keep all content above the flowing layers */
+.glass > * {
+  position: relative;
+  z-index: 2;
+}
