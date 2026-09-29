@@ -396,9 +396,9 @@ body {
     </div>
   </section>
 
-  <!-- SOCIAL LINKS SECTION ("Connect With Me" with TikTok & Logos) -->
+  <!-- SOCIAL LINKS SECTION -->
   <section id="social" class="py-16 px-4 relative z-10">
-    <div class="max-w-5xl mx-auto">
+    <div class="max-w-6xl mx-auto">
       <h2 class="font-display font-bold text-3xl sm:text-4xl text-center mb-3 neon-text animate-piece-drop" style="--rot: -3deg;">Connect With Me</h2>
       <p class="text-center text-gray-300 mb-10">Join the community across platforms</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6">
@@ -477,8 +477,8 @@ body {
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10 animate-piece-drop" style="--rot: 3deg; animation-delay: 0.2s;">
         <button onclick="filterCategory('all', '1.jpeg', event)" class="tab-btn active px-4 sm:px-5 py-2.5 rounded-xl border border-purple-500/30 text-xs sm:text-sm font-semibold transition-all">All Items</button>
         <button onclick="filterCategory('pc', '1.jpeg', event)" class="tab-btn px-4 sm:px-5 py-2.5 rounded-xl border border-purple-500/30 text-xs sm:text-sm font-semibold transition-all">PC Components</button>
-        <button onclick="filterCategory('peripherals', '1.jpeg', event)" class="tab-btn px-4 sm:px-5 py-2.5 rounded-xl border border-purple-500/30 text-xs sm:text-sm font-semibold transition-all">Peripherals &amp; Audio</button>
-        <button onclick="filterCategory('consoles', '2.jpeg', event)" class="tab-btn px-4 sm:px-5 py-2.5 rounded-xl border border-purple-500/30 text-xs sm:text-sm font-semibold transition-all">Consoles &amp; Racing</button>
+        <button onclick="filterCategory('peripherals', '2.jpeg', event)" class="tab-btn px-4 sm:px-5 py-2.5 rounded-xl border border-purple-500/30 text-xs sm:text-sm font-semibold transition-all">Peripherals &amp; Audio</button>
+        <button onclick="filterCategory('consoles', '3.jpeg', event)" class="tab-btn px-4 sm:px-5 py-2.5 rounded-xl border border-purple-500/30 text-xs sm:text-sm font-semibold transition-all">Consoles &amp; Racing</button>
         <button onclick="filterCategory('pcspec', '1.jpeg', event)" class="tab-btn px-4 sm:px-5 py-2.5 rounded-xl border border-purple-500/30 text-xs sm:text-sm font-semibold transition-all">Software &amp; System</button>
       </div>
       <div id="spec-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
@@ -550,7 +550,9 @@ body {
       </button>
       <div class="text-xs font-semibold text-purple-400 uppercase tracking-widest mb-1" id="modal-category">Category</div>
       <h3 class="text-2xl font-display font-bold text-white mb-4 neon-text" id="modal-title">Spec Title</h3>
-      <p class="text-gray-300 text-sm leading-relaxed mb-6" id="modal-desc">Description goes here.</p>
+      <div id="modal-details" class="text-gray-300 text-sm leading-relaxed mb-6">
+        <!-- Details will be loaded dynamically -->
+      </div>
       <div class="flex items-center justify-end">
         <button onclick="closeModal()" class="px-6 py-2 rounded-xl bg-purple-600 hover:bg-purple-500 text-white font-semibold text-sm transition">Close</button>
       </div>
@@ -558,38 +560,56 @@ body {
   </div>
 
   <!-- FOOTER -->
-  <footer class="py-10 px-4 border-t border-purple-500/20 text-center relative z-10">
-    <p class="text-sm text-gray-400">&copy; 2026 MAXRUCHIRA. All Rights Reserved. Built for Gamers &amp; Streamers.</p>
+  <footer class="border-t border-purple-500/20 pt-12 pb-6 px-4 glass mt-12 relative z-10 animate-piece-drop" style="--rot: -2deg;">
+    <div class="max-w-6xl mx-auto flex flex-col items-center text-center">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-8 h-8 rounded-full overflow-hidden border border-purple-500 flex items-center justify-center">
+          <img src="logo.jpg" alt="Logo" class="w-full h-full object-cover" loading="lazy">
+        </div>
+        <span class="font-display font-bold text-lg italic text-white">MAXRUCHIRA</span>
+      </div>
+      <p class="text-sm text-gray-300 mb-6 max-w-md">Sri Lankan Content Creator, Streamer, and Gaming Enthusiast.</p>
+      
+      <div class="flex flex-wrap items-center justify-center gap-6 mb-8 text-gray-300 text-sm font-medium">
+        <a href="https://www.tiktok.com/@maxruchiragaming" target="_blank" class="hover:text-purple-400 transition">TikTok</a>
+        <a href="https://www.youtube.com/@MAXRUCHIRA" target="_blank" class="hover:text-purple-400 transition">YouTube</a>
+        <a href="https://www.youtube.com/@MAXRUCHIRAVLOGS" target="_blank" class="hover:text-purple-400 transition">Vlogs</a>
+        <a href="https://facebook.com/maxruchia/?modal=admin_todo_tour" target="_blank" class="hover:text-purple-400 transition">Facebook</a>
+        <a href="https://discord.gg/8PMyfSGzEA" target="_blank" class="hover:text-purple-400 transition">Discord</a>
+      </div>
+      <div class="w-full max-w-md mx-auto mb-6 p-4 rounded-2xl glass border border-purple-500/50">
+        <p class="text-xs sm:text-sm font-semibold tracking-wider text-purple-300 uppercase mb-1">
+          Developed by <span class="neon-text font-bold">Kavee Creations</span>
+        </p>
+        <a href="mailto:kaveeshasehara7@gmail.com" class="text-xs sm:text-sm text-gray-300 hover:text-purple-400 transition duration-300 break-all">
+          kaveeshasehara7@gmail.com
+        </a>
+      </div>
+      <p class="text-xs text-purple-400/80">&copy; 2026 MAXRUCHIRA. All Rights Reserved.</p>
+    </div>
   </footer>
 
+  <!-- JAVASCRIPT -->
   <script>
-    // Loading Screen Removal
+    // Intro Loader Progress Simulation & Removal
     window.addEventListener('load', () => {
       const loader = document.getElementById('intro-loader');
-      const fill = document.getElementById('loader-bar-fill');
-      if(fill) fill.style.width = '100%';
-      setTimeout(() => {
-        if(loader) {
-          loader.classList.add('fade-out');
+      const barFill = document.getElementById('loader-bar-fill');
+      let progress = 0;
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 20) + 10;
+        if (progress >= 100) {
+          progress = 100;
+          clearInterval(interval);
+          setTimeout(() => {
+            loader.classList.add('fade-out');
+          }, 300);
         }
-      }, 500);
+        barFill.style.width = progress + '%';
+      }, 100);
     });
 
-    // Mobile Menu Toggle
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    const menuIcon = document.getElementById('menuIcon');
-    const closeIcon = document.getElementById('closeIcon');
-
-    if(menuBtn) {
-      menuBtn.addEventListener('click', () => {
-        mobileMenu.classList.toggle('hidden');
-        menuIcon.classList.toggle('hidden');
-        closeIcon.classList.toggle('hidden');
-      });
-    }
-
-    // Lazy load iframes & observer
+    // Lazy Load Iframes
     document.addEventListener("DOMContentLoaded", function() {
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
@@ -602,83 +622,120 @@ body {
           }
         });
       }, { rootMargin: "200px" });
-
       document.querySelectorAll('.lazy-iframe, #live-iframe').forEach(iframe => {
         observer.observe(iframe);
       });
     });
 
-    // Specs Data Array
+    // Mobile Menu Toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIcon = document.getElementById('menuIcon');
+    const closeIcon = document.getElementById('closeIcon');
+    
+    if(menuBtn) {
+      menuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+        menuIcon.classList.toggle('hidden');
+        closeIcon.classList.toggle('hidden');
+      });
+    }
+
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenu.classList.add('hidden');
+        menuIcon.classList.remove('hidden');
+        closeIcon.classList.remove('hidden');
+      });
+    });
+
     const specsData = [
-      { id: 1, cat: 'pc', title: 'Processor (CPU)', desc: 'High-performance multi-core processor optimized for heavy gaming and simultaneous live streaming.', img: '1.jpeg' },
-      { id: 2, cat: 'pc', title: 'Graphics Card (GPU)', desc: 'Powerful ray-tracing enabled GPU delivering ultra smooth frame rates in high-end competitive titles.', img: '1.jpeg' },
-      { id: 3, cat: 'pc', title: 'Memory (RAM)', desc: 'High-speed DDR4/DDR5 RAM kit ensuring seamless multitasking between games, OBS, and browser sources.', img: '1.jpeg' },
-      { id: 4, cat: 'peripherals', title: 'Microphone & Audio', desc: 'Studio-grade condenser microphone with clear voice isolation for crystal clear streams and commentary.', img: '2.jpeg' },
-      { id: 5, cat: 'peripherals', title: 'Gaming Headset', desc: 'Immersive spatial audio headset for precise directional sound cues during gameplay.', img: '2.jpeg' },
-      { id: 6, cat: 'consoles', title: 'PlayStation 5 Slim', desc: 'Next-gen console dedicated to exclusive titles and console streaming sessions.', img: '3.jpeg' },
-      { id: 7, cat: 'consoles', title: 'Logitech G923 Racing Wheel', desc: 'Force feedback steering wheel and pedals for realistic simulator racing streams.', img: '3.jpeg' },
-      { id: 8, cat: 'pcspec', title: 'OBS Studio Setup', desc: 'Configured with custom overlays, alerts, and high bitrate encoding for pristine YouTube live streams.', img: '1.jpeg' }
+      { id: 1, category: 'pc', catName: 'PC Components', title: 'AMD Ryzen 9 3900X', desc: 'Processor (CPU) with high core count for heavy multi-tasking, gaming, and content creation.', specs: ['12 Cores & 24 Threads', 'High Performance AM4 Socket', 'Optimized for 1080p/1440p gaming'] },
+      { id: 2, category: 'pc', catName: 'PC Components', title: 'Asus TUF Gaming B550M-Plus (Wi-Fi)', desc: 'Motherboard with built-in Wi-Fi and robust power delivery for reliable gaming.', specs: ['AMD AM4 Socket', 'Built-in Wi-Fi & Bluetooth', 'Military-grade TUF Components'] },
+      { id: 3, category: 'pc', catName: 'PC Components', title: 'CORSAIR VENGEANCE LPX 32GB', desc: 'High-performance RAM kit configured as 16GB x 2 for smooth gaming and stream encoding.', specs: ['32GB Total (16GB x 2)', 'High Speed DDR4 Memory', 'Low-profile heat spreader design'] },
+      { id: 4, category: 'pc', catName: 'PC Components', title: 'MSI GeForce RTX 5070 Ti 16GB', desc: 'Gaming Trio OC Graphics Card featuring cutting-edge ray-tracing and AI performance.', specs: ['16GB GDDR7/GDDR6X VRAM', 'TRI FROZR Cooling Design', 'DLSS 3 & Ray Tracing support'] },
+      { id: 5, category: 'peripherals', catName: 'Peripherals & Audio', title: 'Lenovo Legion 27" 27Q-11 IPS', desc: 'Triple monitor setup featuring 1440P resolution and extreme 300Hz refresh rate.', specs: ['27-inch IPS Panel', '1440P QHD Resolution', '300Hz Refresh Rate (Triple Monitor Setup)'] },
+      { id: 6, category: 'pc', catName: 'PC Components', title: 'NZXT Kraken X63 280mm', desc: 'CPU Liquid Cooler with RGB water block ring for superior thermal management.', specs: ['280mm Radiator', 'RGB Water Block Ring', 'Silent & Efficient PWM Fans'] },
+      { id: 7, category: 'pc', catName: 'PC Components', title: 'Corsair RM850X CYBERNETICS 850W', desc: 'Fully modular ATX v3.1 power supply ensuring clean and steady power delivery.', specs: ['850W Output Power', 'CYBERNETICS Certified', 'ATX v3.1 Compliant & Fully Modular'] },
+      { id: 8, category: 'pc', catName: 'PC Components', title: 'NZXT H710i Mid Tower', desc: 'Premium Mid Tower case in White and Black with smart device integration.', specs: ['Mid Tower Form Factor', 'White and Black Colorway', 'Tempered Glass Side Panel'] },
+      { id: 9, category: 'pc', catName: 'PC Components', title: 'ATATA XPG SX6000 Lite 512GB', desc: 'M.2 NVMe SSD for fast operating system boot times and responsive storage.', specs: ['512GB M.2 NVMe Capacity', 'High read/write speeds', 'Compact form factor'] },
+      { id: 10, category: 'peripherals', catName: 'Peripherals & Audio', title: 'HyperX Alloy Origins RGB', desc: 'Mechanical gaming keyboard featuring custom mechanical switches and vibrant RGB lighting.', specs: ['Mechanical Switches', 'Customizable RGB Lighting', 'Durable Aircraft-grade Aluminum Body'] },
+      { id: 11, category: 'peripherals', catName: 'Peripherals & Audio', title: 'Razer Kiyo Pro', desc: 'High-performance streaming webcam with adaptive light sensor for crisp video quality.', specs: ['Adaptive Light Sensor', 'Full HD 1080p at 60FPS', 'HDR-enabled video streaming'] },
+      { id: 12, category: 'peripherals', catName: 'Peripherals & Audio', title: 'Razer Seiren V3 Mini', desc: 'Ultra-compact condenser microphone delivering crystal-clear voice for streaming.', specs: ['Professional Condenser Capsule', 'Supercardioid Pickup Pattern', 'Built-in Shock Absorber'] },
+      { id: 13, category: 'peripherals', catName: 'Peripherals & Audio', title: 'Razer Viper Mini', desc: 'Ultra-lightweight gaming mouse engineered for high-speed precision and fast swipes.', specs: ['Ultra-lightweight design', 'Optical Mouse Switches', 'Precise gaming sensor'] },
+      { id: 14, category: 'peripherals', catName: 'Peripherals & Audio', title: 'Razer Gigantus V2', desc: 'Soft gaming mouse pad with textured micro-weave cloth for smooth mouse control.', specs: ['Textured Micro-weave Cloth', 'Thick High-density Foam', 'Anti-slip Rubber Base'] },
+      { id: 15, category: 'peripherals', catName: 'Peripherals & Audio', title: 'Sony PlayStation Platinum Wireless', desc: 'Wireless headset delivering immersive 7.1 virtual surround sound for gaming and media.', specs: ['7.1 Virtual Surround Sound', 'Enhanced Wireless Audio', 'Hidden Noise-Cancelling Microphones'] },
+      { id: 16, category: 'consoles', catName: 'Consoles & Racing', title: 'Elgato HD60X', desc: 'External hardware capture card for smooth console gameplay recording and dual-PC streaming.', specs: ['4K60 HDR10 Passthrough', 'Ultra-low latency', 'OBS Studio / Streamlabs Compatible'] },
+      { id: 17, category: 'consoles', catName: 'Consoles & Racing', title: 'Logitech G923', desc: 'Racing wheel and pedals featuring TRUEFORCE feedback technology for simulation racing.', specs: ['TRUEFORCE High-Definition Feedback', 'Dual-motor Force Feedback', 'Responsive Pressure-sensitive Pedals'] },
+      { id: 18, category: 'consoles', catName: 'Consoles & Racing', title: 'PS5 Slim', desc: 'Next-generation Sony console for exclusive titles, casual gaming, and console streams.', specs: ['Slim Form Factor', 'Ultra-high speed 1TB SSD', 'Ray Tracing & 4K Support'] },
+      { id: 19, category: 'pcspec', catName: 'Software & System', title: 'Windows 11 Pro 64-bit', desc: 'Modern operating system optimized for high-performance gaming, security, and streaming tools.', specs: ['64-bit architecture', 'DirectX 12 Ultimate Support', 'Advanced Security & Productivity Features'] }
     ];
 
-    function renderSpecs(filter = 'all') {
+    function renderSpecs(category = 'all') {
       const grid = document.getElementById('spec-grid');
       if(!grid) return;
       grid.innerHTML = '';
-      const filtered = filter === 'all' ? specsData : specsData.filter(s => s.cat === filter);
-      
+      const filtered = category === 'all' ? specsData : specsData.filter(item => item.category === category);
       filtered.forEach((item, index) => {
         const card = document.createElement('div');
-        card.className = `glass glass-hover rounded-2xl p-6 cursor-pointer transition-all animate-piece-drop`;
-        card.style.setProperty('--rot', (index % 2 === 0 ? 3 : -3) + 'deg');
-        card.style.animationDelay = (index * 0.08) + 's';
+        const rotVal = (index % 2 === 0 ? 3 : -3);
+        card.className = 'glass glass-hover rounded-2xl p-5 cursor-pointer transition-all flex flex-col justify-between group animate-piece-drop';
+        card.style.setProperty('--rot', rotVal + 'deg');
+        card.style.animationDelay = (0.05 * (index % 6)) + 's';
         card.onclick = () => openModal(item);
         
         card.innerHTML = `
-          <div class="w-10 h-10 rounded-xl bg-purple-600/20 border border-purple-500/30 flex items-center justify-center mb-4 text-purple-300 font-display font-bold">0${item.id}</div>
-          <span class="text-xs font-semibold uppercase text-purple-400 tracking-wider">${item.cat}</span>
-          <h3 class="font-display font-bold text-lg text-white mt-1 mb-2">${item.title}</h3>
-          <p class="text-xs text-gray-300 line-clamp-2">${item.desc}</p>
+          <div>
+            <span class="text-[10px] font-semibold text-purple-400 uppercase tracking-widest">${item.catName}</span>
+            <h3 class="font-display font-bold text-lg text-white mt-1 mb-2 group-hover:text-purple-300 transition">${item.title}</h3>
+            <p class="text-xs text-gray-300 line-clamp-2">${item.desc}</p>
+          </div>
+          <div class="mt-4 pt-3 border-t border-purple-500/20 flex items-center justify-between text-xs text-purple-400 font-medium">
+            <span>View Specs</span>
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+          </div>
         `;
         grid.appendChild(card);
       });
     }
 
-    function filterCategory(cat, bannerImg, event) {
+    function filterCategory(category, bannerImg, event) {
       document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      if(event && event.target) event.target.classList.add('active');
-      
+      if(event && event.currentTarget) event.currentTarget.classList.add('active');
       const banner = document.getElementById('setup-banner-img');
       if(banner) {
         banner.style.opacity = '0';
         setTimeout(() => {
           banner.src = bannerImg;
           banner.style.opacity = '1';
-        }, 200);
+        }, 150);
       }
-      renderSpecs(cat);
+      renderSpecs(category);
     }
 
     function openModal(item) {
-      const modal = document.getElementById('specModal');
-      document.getElementById('modal-category').innerText = item.cat.toUpperCase();
+      document.getElementById('modal-category').innerText = item.catName;
       document.getElementById('modal-title').innerText = item.title;
-      document.getElementById('modal-desc').innerText = item.desc;
       
+      const detailsContainer = document.getElementById('modal-details');
+      detailsContainer.innerHTML = `
+        <p class="text-gray-200 mb-3">${item.desc}</p>
+        <h4 class="text-xs font-semibold uppercase tracking-wider text-purple-300 mb-2">Key Specifications:</h4>
+        <ul class="space-y-2">
+          ${item.specs.map(spec => `<li class="flex items-center gap-2 text-xs text-gray-300"><span class="w-1.5 h-1.5 rounded-full bg-purple-400"></span>${spec}</li>`).join('')}
+        </ul>
+      `;
+      const modal = document.getElementById('specModal');
       modal.classList.remove('hidden');
-      setTimeout(() => {
-        modal.classList.remove('opacity-0');
-      }, 10);
+      setTimeout(() => modal.classList.remove('opacity-0'), 10);
     }
 
     function closeModal() {
       const modal = document.getElementById('specModal');
       modal.classList.add('opacity-0');
-      setTimeout(() => {
-        modal.classList.add('hidden');
-      }, 200);
+      setTimeout(() => modal.classList.add('hidden'), 200);
     }
 
-    // Initialize Specs on load
     document.addEventListener('DOMContentLoaded', () => {
       renderSpecs('all');
     });
