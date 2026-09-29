@@ -169,6 +169,15 @@ body {
   will-change: transform, opacity;
 }
 
+/* Modal Popup Animation */
+.modal-enter {
+  animation: modalPop 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+@keyframes modalPop {
+  0% { opacity: 0; transform: scale(0.8) translateY(20px); }
+  100% { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 ::-webkit-scrollbar { width: 6px; }
 ::-webkit-scrollbar-track { background: #0a0612; }
 ::-webkit-scrollbar-thumb { background: #7c3aed; border-radius: 3px; }
@@ -291,7 +300,8 @@ body {
                class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-red-600 hover:bg-red-500 text-white text-sm font-semibold transition-all">
               <i class="fa-brands fa-youtube"></i> WATCH LIVE
             </a>
-            <span class="px-4 py-2 bg-purple-600/30 border border-purple-400/30 rounded-lg text-xs font-semibold text-purple-300 glass">INFO</span>
+            <!-- INFO BUTTON TRIGGER -->
+            <button onclick="openInfoModal()" class="px-4 py-2 bg-purple-600/30 hover:bg-purple-600/50 border border-purple-400/30 rounded-lg text-xs font-semibold text-purple-300 glass transition cursor-pointer">INFO</button>
           </div>
           <button id="menuBtn" class="md:hidden p-2 rounded-lg glass neon-border text-purple-300 hover:text-white transition focus:outline-none" aria-label="Toggle menu">
             <svg id="menuIcon" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
@@ -312,12 +322,64 @@ body {
                class="flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-red-600 text-white font-semibold">
               WATCH LIVE
             </a>
-            <span class="px-4 py-3 bg-purple-600/30 border border-purple-400/30 rounded-lg text-xs font-semibold text-purple-300 text-center glass">INFO</span>
+            <button onclick="openInfoModal()" class="flex-1 px-4 py-3 bg-purple-600/30 border border-purple-400/30 rounded-lg text-xs font-semibold text-purple-300 text-center glass transition">INFO</button>
           </div>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- INFO MODAL POPUP WINDOW -->
+  <div id="infoModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+    <div id="infoModalBox" class="glass border-2 border-purple-500/60 rounded-3xl max-w-2xl w-full p-6 sm:p-8 relative shadow-2xl shadow-purple-500/20 overflow-hidden transform scale-95 transition-all duration-300">
+      
+      <!-- Close Button -->
+      <button onclick="closeInfoModal()" class="absolute top-5 right-5 text-gray-300 hover:text-white p-2 rounded-full glass neon-border transition hover:scale-110">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+      </button>
+
+      <!-- Modal Header Content -->
+      <div class="flex items-center gap-4 mb-6">
+        <div class="w-16 h-16 rounded-full overflow-hidden border-2 border-purple-500 shrink-0 shadow-lg shadow-purple-500/50">
+          <img src="logo.jpg" alt="Ruchira Lakshman" class="w-full h-full object-cover">
+        </div>
+        <div>
+          <h3 class="text-2xl sm:text-3xl font-display font-bold text-white neon-text italic">Ruchira Lakshman</h3>
+          <p class="text-xs sm:text-sm text-purple-300 font-semibold tracking-wider uppercase">MAXRUCHIRA</p>
+        </div>
+      </div>
+
+      <!-- Badges / Tags -->
+      <div class="flex flex-wrap gap-2 mb-6">
+        <span class="px-3 py-1 bg-purple-600/20 border border-purple-500/40 rounded-full text-xs font-medium text-purple-300">Gaming Creator</span>
+        <span class="px-3 py-1 bg-red-600/20 border border-red-500/40 rounded-full text-xs font-medium text-red-300">Livestreamer</span>
+        <span class="px-3 py-1 bg-pink-600/20 border border-pink-500/40 rounded-full text-xs font-medium text-pink-300">Digital Creator</span>
+        <span class="px-3 py-1 bg-blue-600/20 border border-blue-500/40 rounded-full text-xs font-medium text-blue-300">Sri Lanka</span>
+      </div>
+
+      <!-- Main Bio Text -->
+      <div class="space-y-4 text-gray-300 text-sm sm:text-base leading-relaxed max-h-[60vh] overflow-y-auto pr-2 custom-scrollbar">
+        <p class="font-display font-bold text-white text-lg neon-outline-text">
+          What's up, Boys and Girls!
+        </p>
+        <p>
+          I'm <span class="text-white font-semibold">Ruchira Lakshman</span>, the creator behind <span class="neon-text font-bold">MAXRUCHIRA</span>, a Sri Lankan gaming channel built on my passion for gaming, creativity, entertainment, and community.
+        </p>
+        <p>
+          From thrilling action and story-driven adventures to terrifying horror games, I share unforgettable gaming experiences through Sinhala and English gameplay, livestreams, and reactions. For me, gaming isn't just about playing—it's about the excitement, the memories, and the people we meet along the way.
+        </p>
+        <p>
+          Beyond gaming, I'm passionate about 3D visualization, graphic design, technology, and building creative ideas. MAXRUCHIRA is my journey to turn these passions into something bigger and connect Sri Lankan gamers with the world.
+        </p>
+      </div>
+
+      <!-- Modal Footer Action -->
+      <div class="mt-8 pt-4 border-t border-purple-500/20 flex items-center justify-end">
+        <button onclick="closeInfoModal()" class="px-6 py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-500 hover:to-indigo-500 text-white font-bold text-sm shadow-lg shadow-purple-600/40 transition">Got It!</button>
+      </div>
+
+    </div>
+  </div>
 
   <!-- HERO SECTION -->
   <section id="hero" class="relative min-h-screen flex items-center justify-center pt-28 pb-16 px-4 overflow-hidden">
@@ -653,6 +715,29 @@ body {
         closeIcon.classList.remove('hidden');
       });
     });
+
+    // Info Modal Control Functions
+    function openInfoModal() {
+      const modal = document.getElementById('infoModal');
+      const box = document.getElementById('infoModalBox');
+      modal.classList.remove('hidden');
+      setTimeout(() => {
+        modal.classList.remove('opacity-0');
+        box.classList.remove('scale-95');
+        box.classList.add('scale-100');
+      }, 10);
+    }
+
+    function closeInfoModal() {
+      const modal = document.getElementById('infoModal');
+      const box = document.getElementById('infoModalBox');
+      modal.classList.add('opacity-0');
+      box.classList.remove('scale-100');
+      box.classList.add('scale-95');
+      setTimeout(() => {
+        modal.classList.add('hidden');
+      }, 300);
+    }
 
     const specsData = [
       { id: 1, category: 'pc', catName: 'PC Components', title: 'AMD Ryzen 9 3900X', desc: 'Processor (CPU) with high core count for heavy multi-tasking, gaming, and content creation.', specs: ['12 Cores & 24 Threads', 'High Performance AM4 Socket', 'Optimized for 1080p/1440p gaming'] },
